@@ -1,10 +1,11 @@
-import Header from './components/Header';
-import AddTodoDialog from './components/AddTodoDialog';
-import Todos from './components/Todos';
-import { FunctionComponent, Suspense } from 'react';
-import TodoSkeleton from './components/TodoSkeleton';
-import SortTodos from './components/SortTodos';
+'use client';
+
+import { FunctionComponent } from 'react';
 import qs from 'qs';
+import Header from './components/Header';
+import { motion } from 'framer-motion';
+import { AuroraBackground } from '@/components/ui/aurora-background';
+import HeroName from './components/HeroName';
 
 interface HomeProps {
 	searchParams: {
@@ -31,23 +32,25 @@ const Home: FunctionComponent<HomeProps> = ({ searchParams }) => {
 	);
 
 	return (
-		<main>
+		<>
 			<Header />
-			<section className='flex flex-col gap-5 px-4 py-8 sm:gap-8 sm:px-6 sm:py-12 md:gap-10 md:px-10 md:py-16 lg:px-16'>
-				<div className='flex flex-col gap-2'>
-					<div className='flex items-center justify-between'>
-						<h2 className='text-xl'>Todos</h2>
-						<AddTodoDialog />
+			<AuroraBackground>
+				<motion.div
+					initial={{ opacity: 0.0, y: 40 }}
+					whileInView={{ opacity: 1, y: 0 }}
+					transition={{
+						delay: 0.3,
+						duration: 0.8,
+						ease: 'easeInOut',
+					}}
+					className='relative flex h-full w-full flex-col gap-4 px-36 py-24'
+				>
+					<div className='h-full w-full lg:py-16 xl:py-24 lg:px-24 xl:px-32'>
+						<HeroName />
 					</div>
-
-					<SortTodos default={searchParams.sort ?? searchParams.filter} />
-				</div>
-
-				<Suspense fallback={<TodoSkeleton />}>
-					<Todos query={query} />
-				</Suspense>
-			</section>
-		</main>
+				</motion.div>
+			</AuroraBackground>
+		</>
 	);
 };
 
