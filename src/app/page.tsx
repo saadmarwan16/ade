@@ -45,7 +45,7 @@ const Home: FunctionComponent<HomeProps> = ({ searchParams }) => {
 					}}
 					className='relative flex h-full w-full flex-col gap-4 px-36 py-24'
 				>
-					<div className='h-full w-full lg:py-16 xl:py-24 lg:px-24 xl:px-32'>
+					<div className='h-full w-full lg:px-24 lg:py-16 xl:px-32 xl:py-24'>
 						<HeroName />
 					</div>
 				</motion.div>
