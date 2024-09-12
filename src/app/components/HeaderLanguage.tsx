@@ -12,6 +12,7 @@ const HeaderLanguage: FunctionComponent<HeaderLanguageProps> = () => {
 			customLabels={{ US: 'EN', FR: 'FR', TR: 'TR' }}
 			selected={selected}
 			onSelect={(code) => setSelected(code)}
+			className='hidden md:block'
 		/>
 	);
 };
