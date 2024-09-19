@@ -9,26 +9,38 @@ interface FooterProps {}
 
 const Footer: FunctionComponent<FooterProps> = () => {
 	return (
-		<footer className='mt-6 grid grid-cols-1 gap-2 bg-gray-100 px-5 py-3'>
-			<CustomAvatar />
-			<div className='flex gap-1 text-3xl'>
-				<Link href='https://instagram.com' target='_blank'>
-					<IoLogoInstagram className='text-rose-600' />
-				</Link>
-				<Link href='https://linkedin.com' target='_blank'>
-					<IoLogoLinkedin className='text-blue-800' />
-				</Link>
+		<footer className='mt-6 flex justify-center bg-gray-100 px-5 py-3 sm:px-8'>
+			<div className='grid w-full max-w-[1400px] grid-cols-1 gap-2 sm:grid-cols-2 sm:items-center'>
+				<div className='sm:order-1'>
+					<CustomAvatar />
+				</div>
+				<div className='flex gap-1 text-3xl sm:order-2 sm:place-self-end md:text-4xl'>
+					<Link
+						href='https://instagram.com'
+						target='_blank'
+						className='duration-500 hover:scale-105'
+					>
+						<IoLogoInstagram className='text-rose-600' />
+					</Link>
+					<Link
+						href='https://linkedin.com'
+						target='_blank'
+						className='duration-500 hover:scale-105'
+					>
+						<IoLogoLinkedin className='text-blue-800' />
+					</Link>
+				</div>
+				<span className='font-light sm:order-4 sm:place-self-end md:text-lg'>
+					Email: <span className='font-semibold'>info@ade.com</span>
+				</span>
+				<span className='text-sm sm:order-3 md:text-base'>
+					© 2024{' '}
+					<Link href={Routes.HOME} className='text-blue-700'>
+						ADE
+					</Link>{' '}
+					| All right reserved
+				</span>
 			</div>
-			<span className='font-light'>
-				Email: <span className='font-semibold'>info@ade.com</span>
-			</span>
-			<span className='text-sm'>
-				© 2024{' '}
-				<Link href={Routes.HOME} className='text-blue-700'>
-					ADE
-				</Link>{' '}
-				| All right reserved
-			</span>
 		</footer>
 	);
 };
