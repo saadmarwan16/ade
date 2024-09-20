@@ -4,7 +4,6 @@ import { FunctionComponent } from 'react';
 import { Separator } from '@/components/ui/separator';
 import { motion } from 'framer-motion';
 import { AuroraBackground } from '@/components/ui/aurora-background';
-import Footer from '../components/Footer';
 import HeroTitle from '../components/activities/HeroTitle';
 import Featured from '../components/activities/Featured';
 import Tabs from '../components/activities/Tabs';
