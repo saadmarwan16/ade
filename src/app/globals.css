@@ -77,4 +77,8 @@
 		scrollbar-width: none;
 		-ms-overflow-style: none;
 	}
+
+	.paused {
+		animation-play-state: paused;
+	}
 }
