@@ -94,6 +94,9 @@ const config = {
 				aurora: 'aurora 60s linear infinite',
 				'loop-scroll': 'loop-scroll 10s linear infinite',
 			},
+			screens: {
+				'3xl': '1860px',
+			},
 		},
 	},
 	plugins: [require('tailwindcss-animate'), addVariablesForColors],
