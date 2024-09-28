@@ -1,3 +1,5 @@
+'use client';
+
 import React, { FunctionComponent, useState } from 'react';
 import ReactFlagsSelect from 'react-flags-select';
 
@@ -12,7 +14,6 @@ const HeaderLanguage: FunctionComponent<HeaderLanguageProps> = () => {
 			customLabels={{ US: 'EN', FR: 'FR', TR: 'TR' }}
 			selected={selected}
 			onSelect={(code) => setSelected(code)}
-			className='hidden md:block'
 		/>
 	);
 };

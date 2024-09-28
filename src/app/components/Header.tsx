@@ -1,5 +1,3 @@
-'use client';
-
 import { FunctionComponent } from 'react';
 import Link from 'next/link';
 import HeaderLanguage from './HeaderLanguage';
@@ -21,7 +19,9 @@ const Header: FunctionComponent = () => {
 
 				<>
 					<Hamburger />
-					<HeaderLanguage />
+					<div className='hidden md:block'>
+						<HeaderLanguage />
+					</div>
 				</>
 			</div>
 		</header>
