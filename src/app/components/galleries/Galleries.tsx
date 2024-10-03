@@ -16,7 +16,7 @@ const Galleries: FunctionComponent<GalleriesProps> = () => {
 						href={Routes.GALLERY_DETAILS('123')}
 						className='flex flex-col gap-2 duration-500 hover:scale-105 hover:text-blue-700'
 					>
-						<div className='relative aspect-video rounded-md bg-blue-700/30'>
+						<div className='relative aspect-video rounded-md'>
 							<Image alt='Title' src='/me-1.jpg' fill className='rounded-md' />
 							<div className='absolute bottom-0 left-0 right-0 top-0 rounded-md bg-black/30 p-2'>
 								<div className='w-fit rounded-sm border-[0.5px] border-gray-300 px-2'>
