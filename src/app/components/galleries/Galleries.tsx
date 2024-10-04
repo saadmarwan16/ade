@@ -3,6 +3,7 @@ import Image from 'next/image';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 import { Routes } from '@/lib/routes';
+import AceternityButton from '@/components/ui/aceternity-button';
 
 interface GalleriesProps {}
 
@@ -21,7 +22,7 @@ const Galleries: FunctionComponent<GalleriesProps> = () => {
 							<div className='absolute bottom-0 left-0 right-0 top-0 rounded-md bg-black/30 p-2'>
 								<div className='w-fit rounded-sm border-[0.5px] border-gray-300 px-2'>
 									<small className='text-base font-extralight text-white'>
-										92 photos
+										21 photos
 									</small>
 								</div>
 							</div>
@@ -32,8 +33,10 @@ const Galleries: FunctionComponent<GalleriesProps> = () => {
 						</h4>
 					</Link>
 				))}
-
-				<Button className='sm:col-span-2 sm:place-self-end'>See more</Button>
+				<AceternityButton
+					text='See more'
+					className='sm:col-span-2 sm:place-self-end lg:col-span-3'
+				/>
 			</div>
 		</div>
 	);

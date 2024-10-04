@@ -2,6 +2,7 @@ import { FunctionComponent } from 'react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
+import AceternityButton from '@/components/ui/aceternity-button';
 
 interface ReachOutProps {}
 
@@ -28,10 +29,12 @@ const ReachOut: FunctionComponent<ReachOutProps> = () => {
 				<Textarea
 					className='md:col-span-2 md:text-lg md:placeholder:text-lg'
 					placeholder='Type your message here...'
+					rows={6}
 				/>
-				<Button className='mt-3 md:col-span-2 md:place-self-end'>
-					Send Message
-				</Button>
+				<AceternityButton
+					text='Send message'
+					className='mt-3 sm:place-self-end md:col-span-2'
+				/>
 			</form>
 		</div>
 	);

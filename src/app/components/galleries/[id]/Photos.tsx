@@ -1,7 +1,4 @@
-'use client';
-
-import { FunctionComponent, useCallback, useEffect, useState } from 'react';
-import Image from 'next/image';
+import { FunctionComponent, useState } from 'react';
 import { Routes } from '@/lib/routes';
 import Link from 'next/link';
 import {
@@ -12,39 +9,21 @@ import {
 	BreadcrumbPage,
 	BreadcrumbSeparator,
 } from '@/components/ui/breadcrumb';
-import Photo from './Photo';
-// import sizeOf from 'image-size';
-// import ImageViewer from 'react-simple-image-viewer';
+
+import { RowsPhotoAlbum } from 'react-photo-album';
+import 'react-photo-album/rows.css';
+
+import photos from '@/lib/photos';
+import Lightbox from '../../LightBox';
 
 interface PhotosProps {}
 
 const Photos: FunctionComponent<PhotosProps> = () => {
-	const [dimensions, setDimensions] = useState({ height: 0, width: 0 });
-
-	// const [currentImage, setCurrentImage] = useState(0);
-	// const [isViewerOpen, setIsViewerOpen] = useState(false);
-	// const images = [
-	// 	'https://en.wikipedia.org/wiki/Image#/media/File:Image_created_with_a_mobile_phone.png',
-	// 	'https://logos-world.net/wp-content/uploads/2020/09/Wikipedia-Logo.png',
-	// 	'https://en.wikipedia.org/wiki/Image#/media/File:Image_created_with_a_mobile_phone.png',
-	// 	'https://logos-world.net/wp-content/uploads/2020/09/Wikipedia-Logo.png',
-	// ];
-
-	// const openImageViewer = useCallback((index: number) => {
-	// 	setCurrentImage(index);
-	// 	setIsViewerOpen(true);
-	// }, []);
-
-	// const closeImageViewer = () => {
-	// 	setCurrentImage(0);
-	// 	setIsViewerOpen(false);
-	// };
-	// const dimensions = sizeOf('https://en.wikipedia.org/wiki/Image#/media/File:Image_created_with_a_mobile_phone.png');
-	// console.log(dimensions.width, dimensions.height);
+	const [index, setIndex] = useState(-1);
 
 	return (
-		<>
-			<div className='md:-mb-18 -mx-5 -mb-11 flex flex-col gap-5 bg-gray-200/40 px-5 py-8 backdrop-blur-sm sm:-mx-8 sm:-mb-16 sm:px-8 md:gap-8 lg:w-screen lg:py-12 xl:py-16'>
+		<div className='md:-mb-18 -mx-5 -mb-11 bg-gray-200/40 px-5 py-8 backdrop-blur-sm sm:-mx-8 sm:-mb-16 sm:px-8 md:gap-8 lg:w-screen lg:py-12 xl:py-16'>
+			<div className='mx-auto flex flex-col gap-5 xl:max-w-[1336px]'>
 				<Breadcrumb>
 					<BreadcrumbList>
 						<BreadcrumbItem>
@@ -60,32 +39,40 @@ const Photos: FunctionComponent<PhotosProps> = () => {
 						<BreadcrumbSeparator />
 						<BreadcrumbItem>
 							<BreadcrumbPage className='text-base lg:text-lg'>
-								92 photos
+								21 photos
 							</BreadcrumbPage>
 						</BreadcrumbItem>
 					</BreadcrumbList>
 				</Breadcrumb>
 
-				<div className='mx-auto grid w-full grid-cols-1 gap-2 sm:grid-cols-2 lg:grid-cols-3 xl:max-w-[1336px] xl:gap-3'>
-					{[...Array(10)].map((_, idx) => (
-						<Photo
-							key={idx}
-							src='https://en.wikipedia.org/wiki/Image#/media/File:Image_created_with_a_mobile_phone.png'
-						/>
-					))}
-				</div>
+				<RowsPhotoAlbum
+					photos={photos}
+					targetRowHeight={300}
+					onClick={({ index }) => setIndex(index)}
+					componentsProps={{
+						image: {
+							style: { borderRadius: '0.4rem' },
+						},
+					}}
+				/>
+
+				{index >= 0 && (
+					<Lightbox
+						slides={photos}
+						open={index >= 0}
+						index={index}
+						close={() => setIndex(-1)}
+					/>
+				)}
 			</div>
 
-			{/* {isViewerOpen && (
-				<ImageViewer
-					src={images}
-					currentIndex={currentImage}
-					disableScroll={false}
-					closeOnClickOutside={true}
-					onClose={closeImageViewer}
-				/>
-			)} */}
-		</>
+			{/* <button className='relative p-[3px]'>
+				<div className='absolute inset-0 rounded-lg bg-gradient-to-r from-[#B18733] via-[#9B6D22] to-[#6F3800]' />
+				<div className='group relative rounded-[6px] bg-black px-8 py-2 text-white transition duration-200 hover:bg-transparent'>
+					Lit up borders
+				</div>
+			</button> */}
+		</div>
 	);
 };
 

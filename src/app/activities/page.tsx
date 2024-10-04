@@ -9,6 +9,7 @@ import Featured from '../components/activities/Featured';
 import Tabs from '../components/activities/Tabs';
 import Activities from '../components/activities/Activities';
 import { Button } from '@/components/ui/button';
+import AceternityButton from '@/components/ui/aceternity-button';
 
 interface ActivitiesPageProps {}
 
@@ -31,9 +32,7 @@ const ActivitiesPage: FunctionComponent<ActivitiesPageProps> = () => {
 					<Separator className='bg-gray-400' />
 					<Tabs />
 					<Activities />
-					<Button className='place-self-end' size='lg'>
-						See more
-					</Button>
+					<AceternityButton text='See more' className='sm:place-self-end' />
 				</div>
 			</motion.div>
 		</AuroraBackground>

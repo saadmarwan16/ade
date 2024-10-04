@@ -1,6 +1,7 @@
 import { FunctionComponent } from 'react';
 import { Button } from '@/components/ui/button';
 import Activities from '../activities/Activities';
+import AceternityButton from '@/components/ui/aceternity-button';
 
 interface RecentActivitiesProps {}
 
@@ -11,7 +12,7 @@ const RecentActivities: FunctionComponent<RecentActivitiesProps> = () => {
 				Recent Activities
 			</h3>
 			<Activities />
-			<Button className='place-self-end'>View all</Button>
+			<AceternityButton text='View all' className='sm:place-self-end' />
 		</div>
 	);
 };

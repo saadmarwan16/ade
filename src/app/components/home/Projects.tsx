@@ -1,9 +1,8 @@
 import { FunctionComponent } from 'react';
 import Image from 'next/image';
-import { buttonVariants } from '@/components/ui/button';
-import Link from 'next/link';
 import { Routes } from '@/lib/routes';
 import { HomeStickyScroll } from '@/components/ui/home-sticky-scroll-reveal';
+import AceternityButton from '@/components/ui/aceternity-button';
 
 interface ProjectsProps {}
 
@@ -89,12 +88,13 @@ const Projects: FunctionComponent<ProjectsProps> = () => {
 							{project.description}
 						</p>
 
-						<Link
+						{/* <Link
 							href={project.link}
 							className={buttonVariants({ variant: 'default' })}
 						>
 							Learn more
-						</Link>
+						</Link> */}
+						<AceternityButton text='Learn more' link={project.link} />
 
 						<div className='relative mt-6 aspect-square max-h-[400px] w-full rounded-md'>
 							<Image

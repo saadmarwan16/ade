@@ -4,9 +4,8 @@ import React, { useRef } from 'react';
 import { useMotionValueEvent, useScroll } from 'framer-motion';
 import { motion } from 'framer-motion';
 import { cn } from '@/lib/utils';
-import Link from 'next/link';
-import { buttonVariants } from './button';
 import { Route } from 'next';
+import AceternityButton from './aceternity-button';
 
 export const HomeStickyScroll = ({
 	content,
@@ -80,12 +79,7 @@ export const HomeStickyScroll = ({
 							>
 								{item.description}
 							</motion.p>
-							<Link
-								href={item.link}
-								className={buttonVariants({ variant: 'default' })}
-							>
-								Learn more
-							</Link>
+							<AceternityButton text='Learn more' link={item.link} />
 						</div>
 					))}
 					<div className='h-40' />

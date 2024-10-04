@@ -1,8 +1,7 @@
 import { FunctionComponent } from 'react';
 import Image from 'next/image';
-import { buttonVariants } from '@/components/ui/button';
 import { Routes } from '@/lib/routes';
-import Link from 'next/link';
+import AceternityButton from '@/components/ui/aceternity-button';
 
 interface MeAndPartnersProps {}
 
@@ -90,13 +89,7 @@ const MeAndPartners: FunctionComponent<MeAndPartnersProps> = () => {
 					Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sed
 					cupiditate nostrum.
 				</p>
-
-				<Link
-					href={Routes.KNOW_ME}
-					className={buttonVariants({ variant: 'default' })}
-				>
-					Learn more
-				</Link>
+				<AceternityButton text='Learn more' link={Routes.KNOW_ME} />
 			</div>
 		</div>
 	);
