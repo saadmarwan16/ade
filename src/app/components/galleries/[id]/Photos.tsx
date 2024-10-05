@@ -1,3 +1,5 @@
+'use client';
+
 import { FunctionComponent, useState } from 'react';
 import { Routes } from '@/lib/routes';
 import Link from 'next/link';

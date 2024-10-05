@@ -1,8 +1,8 @@
 import { FunctionComponent } from 'react';
 import TitleCategories from '@/app/components/activities/[id]/TitleCategories';
-import CustomCarousel from './CustomCarousel';
-import Content from './Content';
-import Socials from './Socials';
+import CustomCarousel from '@/app/components/activities/[id]/CustomCarousel';
+import Content from '@/app/components/activities/[id]/Content';
+import Socials from '@/app/components/activities/[id]/Socials';
 
 interface ActivityDetailsPageProps {}
 
@@ -18,5 +18,9 @@ const ActivityDetailsPage: FunctionComponent<ActivityDetailsPageProps> = () => {
 		</main>
 	);
 };
+
+export async function generateStaticParams() {
+	return [{ id: '123' }, { id: '456' }];
+}
 
 export default ActivityDetailsPage;

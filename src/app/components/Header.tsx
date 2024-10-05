@@ -13,7 +13,7 @@ const Header: FunctionComponent = () => {
 
 				<div className='hidden gap-6 text-xl text-gray-600 md:flex'>
 					<Link href={Routes.ACTIVITIES}>Activities</Link>
-					<Link href={Routes.GALLERY}>Gallery</Link>
+					<Link href={Routes.GALLERY}>Galleries</Link>
 					<Link href={Routes.KNOW_ME}>Know me</Link>
 				</div>
 

@@ -5,7 +5,7 @@ interface ContentProps {}
 const Content: FunctionComponent<ContentProps> = () => {
 	return (
 		<div className='my-6 md:my-8 lg:my-10 lg:flex lg:justify-center'>
-			{/* The rich text block goes here instead of a paragraph */}
+			{/* TODO: The rich text block goes here instead of a paragraph */}
 			<p className='max-w-4xl text-base sm:text-lg lg:text-xl xl:text-2xl'>
 				Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed egestas,
 				libero a vehicula tincidunt, risus metus bibendum lectus, nec lacinia
