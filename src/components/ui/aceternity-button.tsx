@@ -1,6 +1,6 @@
 import { Route } from 'next';
 import Link from 'next/link';
-import { FunctionComponent } from 'react';
+import React, { FunctionComponent } from 'react';
 
 interface AceternityButtonProps {
 	text: string;

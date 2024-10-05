@@ -67,13 +67,6 @@ const Photos: FunctionComponent<PhotosProps> = () => {
 					/>
 				)}
 			</div>
-
-			{/* <button className='relative p-[3px]'>
-				<div className='absolute inset-0 rounded-lg bg-gradient-to-r from-[#B18733] via-[#9B6D22] to-[#6F3800]' />
-				<div className='group relative rounded-[6px] bg-black px-8 py-2 text-white transition duration-200 hover:bg-transparent'>
-					Lit up borders
-				</div>
-			</button> */}
 		</div>
 	);
 };

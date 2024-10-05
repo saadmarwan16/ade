@@ -1,4 +1,4 @@
-import { FunctionComponent } from 'react';
+import React, { FunctionComponent } from 'react';
 import Image from 'next/image';
 import { StickyScroll } from '@/components/ui/sticky-scroll-reveal';
 

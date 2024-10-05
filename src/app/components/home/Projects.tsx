@@ -1,4 +1,4 @@
-import { FunctionComponent } from 'react';
+import React, { FunctionComponent } from 'react';
 import Image from 'next/image';
 import { Routes } from '@/lib/routes';
 import { HomeStickyScroll } from '@/components/ui/home-sticky-scroll-reveal';
@@ -87,19 +87,12 @@ const Projects: FunctionComponent<ProjectsProps> = () => {
 						<p className='text-base sm:text-lg md:text-xl'>
 							{project.description}
 						</p>
-
-						{/* <Link
-							href={project.link}
-							className={buttonVariants({ variant: 'default' })}
-						>
-							Learn more
-						</Link> */}
 						<AceternityButton text='Learn more' link={project.link} />
 
 						<div className='relative mt-6 aspect-square max-h-[400px] w-full rounded-md'>
 							<Image
 								src={project.image}
-								alt='Helping woman in Africa gain access to health care'
+								alt={project.title}
 								className='rounded-md'
 								fill
 							/>

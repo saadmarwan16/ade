@@ -1,9 +1,8 @@
 import { Routes } from '@/lib/routes';
 import Link from 'next/link';
 import { FunctionComponent } from 'react';
-import { AvatarFallback, AvatarImage } from '@/components/ui/avatar';
-import { Avatar } from '@radix-ui/react-avatar';
 import HeaderName from './HeaderName';
+import Image from 'next/image';
 
 interface CustomAvatarProps {}
 
@@ -13,14 +12,14 @@ const CustomAvatar: FunctionComponent<CustomAvatarProps> = () => {
 			href={Routes.HOME}
 			className='flex w-fit items-center gap-2 duration-500 hover:scale-105 md:gap-4'
 		>
-			<Avatar className='h-12 w-12 md:h-16 md:w-16'>
-				<AvatarImage
+			<div className='relative aspect-square w-12 rounded-full md:w-16'>
+				<Image
 					src='https://github.com/shadcn.png'
 					alt='Avatar 1'
-					className='h-12 w-12 rounded-full md:h-16 md:w-16'
+					className='rounded-full'
+					fill
 				/>
-				<AvatarFallback>ADE</AvatarFallback>
-			</Avatar>
+			</div>
 
 			<HeaderName />
 		</Link>

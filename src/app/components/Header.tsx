@@ -1,4 +1,4 @@
-import { FunctionComponent } from 'react';
+import React, { FunctionComponent } from 'react';
 import Link from 'next/link';
 import HeaderLanguage from './HeaderLanguage';
 import Hamburger from './Hamburger';
