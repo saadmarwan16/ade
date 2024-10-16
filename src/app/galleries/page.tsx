@@ -8,7 +8,7 @@ interface GalleriesPageProps {}
 const GalleriesPage: FunctionComponent<GalleriesPageProps> = () => {
 	return (
 		<BackgroundWrapper>
-			<div className='flex w-full max-w-[1400px] flex-col gap-8 p-5 sm:gap-10 sm:px-8 sm:py-10 md:gap-12 lg:items-center lg:gap-16'>
+			<div className='flex w-full flex-col gap-8 sm:gap-10 sm:py-10 md:gap-12 lg:items-center lg:gap-16'>
 				<Hero />
 				<Galleries />
 			</div>

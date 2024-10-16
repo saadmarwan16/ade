@@ -5,7 +5,7 @@ interface HeroProps {}
 
 const Hero: FunctionComponent<HeroProps> = () => {
 	return (
-		<div className='flex w-full flex-col gap-4 lg:gap-10'>
+		<div className='flex w-full max-w-[1400px] p-5 sm:px-8 flex-col gap-4 lg:gap-10'>
 			<h2 className='max-w-[400px] text-3xl font-medium sm:text-4xl sm:font-semibold lg:max-w-[600px] lg:text-5xl'>
 				Meeting with the Minister of Health
 			</h2>

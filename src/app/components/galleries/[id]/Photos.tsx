@@ -24,7 +24,7 @@ const Photos: FunctionComponent<PhotosProps> = () => {
 	const [index, setIndex] = useState(-1);
 
 	return (
-		<div className='md:-mb-18 -mx-5 -mb-11 bg-gray-200/40 px-5 py-8 backdrop-blur-sm sm:-mx-8 sm:-mb-16 sm:px-8 md:gap-8 lg:w-[calc(100vw-18px)] lg:py-12 xl:py-16'>
+		<div className='md:-mb-18 -mb-11 bg-gray-200/40 px-5 py-8 backdrop-blur-sm sm:px-8 md:gap-8 lg:w-full lg:py-12 xl:py-16'>
 			<div className='mx-auto flex flex-col gap-5 xl:max-w-[1336px]'>
 				<Breadcrumb>
 					<BreadcrumbList>

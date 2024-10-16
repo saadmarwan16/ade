@@ -9,7 +9,7 @@ interface GalleriesProps {}
 
 const Galleries: FunctionComponent<GalleriesProps> = () => {
 	return (
-		<div className='md:-mb-18 -mx-5 -mb-11 bg-gray-200/40 px-5 py-8 backdrop-blur-sm sm:-mx-8 sm:-mb-16 sm:px-8 lg:w-screen lg:py-12 xl:py-16'>
+		<div className='md:-mb-18 -mb-11 bg-gray-200/40 px-5 py-8 backdrop-blur-sm sm:-mb-16 sm:px-8 lg:w-full lg:py-12 xl:py-16'>
 			<div className='mx-auto grid grid-cols-1 gap-4 sm:grid-cols-2 md:gap-6 lg:grid-cols-3 xl:max-w-[1336px] xl:gap-8'>
 				{[...Array(10)].map((_, idx) => (
 					<Link
