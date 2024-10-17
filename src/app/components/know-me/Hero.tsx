@@ -14,7 +14,7 @@ const Hero: FunctionComponent<HeroProps> = () => {
 			<h2
 				className={`${permanentMarker.className} text-5xl sm:text-6xl md:text-7xl lg:text-8xl`}
 			>
-				ADE.
+				ADE
 			</h2>
 			<h4 className='font-light text-gray-700 sm:text-lg md:text-xl lg:text-2xl'>
 				A BIT ABOUT ME

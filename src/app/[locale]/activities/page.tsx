@@ -1,11 +1,11 @@
 import { FunctionComponent } from 'react';
 import { Separator } from '@/components/ui/separator';
-import HeroTitle from '../components/activities/HeroTitle';
-import Featured from '../components/activities/Featured';
-import Tabs from '../components/activities/Tabs';
-import Activities from '../components/activities/Activities';
+import BackgroundWrapper from '@/app/components/BackgroundWrapper';
+import HeroTitle from '@/app/components/activities/HeroTitle';
+import Featured from '@/app/components/activities/Featured';
+import Tabs from '@/app/components/activities/Tabs';
+import Activities from '@/app/components/activities/Activities';
 import AceternityButton from '@/components/ui/aceternity-button';
-import BackgroundWrapper from '../components/BackgroundWrapper';
 
 interface ActivitiesPageProps {}
 

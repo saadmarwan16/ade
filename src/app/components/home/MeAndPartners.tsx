@@ -2,6 +2,7 @@ import { FunctionComponent } from 'react';
 import Image from 'next/image';
 import { Routes } from '@/lib/routes';
 import AceternityButton from '@/components/ui/aceternity-button';
+import Link from 'next/link';
 
 interface MeAndPartnersProps {}
 
@@ -9,22 +10,27 @@ const logos = [
 	{
 		alt: 'Facebook',
 		src: '/logos/facebook.webp',
+		link: 'https://facebook.com',
 	},
 	{
 		alt: 'Google',
 		src: '/logos/google.jpg',
+		link: 'https://google.com',
 	},
 	{
 		alt: 'Instagram',
 		src: '/logos/instagram.png',
+		link: 'https://instagram.com',
 	},
 	{
 		alt: 'LinkedIn',
 		src: '/logos/linkedin.png',
+		link: 'https://linkedin.com',
 	},
 	{
 		alt: 'X formerly twitter',
 		src: '/logos/x.avif',
+		link: 'https://twitter.com',
 	},
 ];
 
@@ -34,8 +40,10 @@ const MeAndPartners: FunctionComponent<MeAndPartnersProps> = () => {
 			<div className='-mx-5 overflow-hidden sm:-mx-8 lg:basis-2/3 xl:basis-3/5 2xl:grow'>
 				<div className='hidden gap-8 px-8 md:flex'>
 					{logos.map((logo, idx) => (
-						<div
+						<a
 							key={idx}
+							href={logo.link}
+							target='_blank'
 							className='relative aspect-square flex-shrink-0 basis-16 rounded-md xl:basis-20 2xl:basis-24'
 						>
 							<Image
@@ -44,7 +52,7 @@ const MeAndPartners: FunctionComponent<MeAndPartnersProps> = () => {
 								fill
 								className='rounded-md'
 							/>
-						</div>
+						</a>
 					))}
 				</div>
 				<div className='group flex w-fit overflow-hidden md:hidden'>

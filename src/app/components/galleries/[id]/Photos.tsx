@@ -17,6 +17,7 @@ import 'react-photo-album/rows.css';
 
 import photos from '@/lib/photos';
 import Lightbox from '../../LightBox';
+import RenderNextImage from './RenderNextImage';
 
 interface PhotosProps {}
 
@@ -51,11 +52,7 @@ const Photos: FunctionComponent<PhotosProps> = () => {
 					photos={photos}
 					targetRowHeight={300}
 					onClick={({ index }) => setIndex(index)}
-					componentsProps={{
-						image: {
-							style: { borderRadius: '0.4rem' },
-						},
-					}}
+					render={{ image: RenderNextImage }}
 				/>
 
 				{index >= 0 && (

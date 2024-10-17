@@ -1,8 +1,8 @@
+import BackgroundWrapper from '@/app/components/BackgroundWrapper';
+import Content from '@/app/components/know-me/Content';
+import Hero from '@/app/components/know-me/Hero';
+import ReachOut from '@/app/components/know-me/ReachOut';
 import { FunctionComponent } from 'react';
-import Hero from '../components/know-me/Hero';
-import Content from '../components/know-me/Content';
-import ReachOut from '../components/know-me/ReachOut';
-import BackgroundWrapper from '../components/BackgroundWrapper';
 
 interface KnowMePageProps {}
 

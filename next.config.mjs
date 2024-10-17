@@ -14,6 +14,11 @@ const nextConfig = {
 				hostname: 'github.com',
 				pathname: '**',
 			},
+			{
+				protocol: 'https',
+				hostname: 'assets.react-photo-album.com',
+				pathname: '**',
+			},
 		],
 	},
 	experimental: {
