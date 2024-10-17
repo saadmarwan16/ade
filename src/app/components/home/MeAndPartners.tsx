@@ -1,8 +1,8 @@
 import { FunctionComponent } from 'react';
 import Image from 'next/image';
+import { useTranslations } from 'next-intl';
 import { Routes } from '@/lib/routes';
 import AceternityButton from '@/components/ui/aceternity-button';
-import Link from 'next/link';
 
 interface MeAndPartnersProps {}
 
@@ -35,6 +35,8 @@ const logos = [
 ];
 
 const MeAndPartners: FunctionComponent<MeAndPartnersProps> = () => {
+	const t = useTranslations('HomePage');
+
 	return (
 		<div className='flex w-full flex-col gap-8 sm:gap-10 md:gap-12 lg:flex-row lg:gap-16'>
 			<div className='-mx-5 overflow-hidden sm:-mx-8 lg:basis-2/3 xl:basis-3/5 2xl:grow'>
@@ -97,7 +99,7 @@ const MeAndPartners: FunctionComponent<MeAndPartnersProps> = () => {
 					Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sed
 					cupiditate nostrum.
 				</p>
-				<AceternityButton text='Learn more' link={Routes.KNOW_ME} />
+				<AceternityButton text={t('learn-more-button')} link={Routes.KNOW_ME} />
 			</div>
 		</div>
 	);

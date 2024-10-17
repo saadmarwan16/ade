@@ -1,0 +1,42 @@
+{
+	"Shared": {
+		"activities": "Activities",
+		"galleries": "Galleries",
+		"know-me": "Know me",
+		"rights": "All rights reserved"
+	},
+	"HomePage": {
+		"name": "I am",
+		"learn-more-button": "Learn more",
+		"recent-activities": "Recent Activities",
+		"view-all-button": "View all"
+	},
+	"ActivitiesPage": {
+		"all-tab": "All",
+		"personal-tab": "Personal",
+		"social-tab": "Social",
+		"political-tab": "Political",
+		"professional-tab": "Professional",
+		"see-more-button": "See more"
+	},
+	"ActivityDetailsPage": {
+		"share": "Share"
+	},
+	"GalleriesPage": {
+		"photos": "Photo(s)",
+		"see-more-button": "See more"
+	},
+	"GalleryDetailsPage": {
+		"photos": "Photo(s)",
+		"galleries-link": "Galleries"
+	},
+	"KnowMePage": {
+		"me": "A BIT ABOUT ME",
+		"reach-out": "Reach out",
+		"name": "Name...",
+		"email": "Email...",
+		"subject": "Subject...",
+		"message": "Type your message here...",
+		"send-message-button": "Send message"
+	}
+}

@@ -18,10 +18,12 @@ import 'react-photo-album/rows.css';
 import photos from '@/lib/photos';
 import Lightbox from '../../LightBox';
 import RenderNextImage from './RenderNextImage';
+import { useTranslations } from 'next-intl';
 
 interface PhotosProps {}
 
 const Photos: FunctionComponent<PhotosProps> = () => {
+	const t = useTranslations('GalleryDetailsPage');
 	const [index, setIndex] = useState(-1);
 
 	return (
@@ -35,14 +37,14 @@ const Photos: FunctionComponent<PhotosProps> = () => {
 									href={Routes.GALLERY}
 									className='text-base sm:text-xl lg:text-2xl'
 								>
-									Galleries
+									{t('galleries-link')}
 								</Link>
 							</BreadcrumbLink>
 						</BreadcrumbItem>
 						<BreadcrumbSeparator />
 						<BreadcrumbItem>
 							<BreadcrumbPage className='text-base lg:text-lg'>
-								21 photos
+								21 {t('photos')}
 							</BreadcrumbPage>
 						</BreadcrumbItem>
 					</BreadcrumbList>

@@ -10,9 +10,7 @@ const permanentMarker = Permanent_Marker({
 
 const HeaderName: FunctionComponent<HeaderNameProps> = () => {
 	return (
-		<h2 className={`${permanentMarker.className} text-3xl md:text-4xl`}>
-			ADE
-		</h2>
+		<h2 className={`${permanentMarker.className} text-3xl md:text-4xl`}>ADE</h2>
 	);
 };
 

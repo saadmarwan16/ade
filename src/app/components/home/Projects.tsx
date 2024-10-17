@@ -1,5 +1,6 @@
 import React, { FunctionComponent } from 'react';
 import Image from 'next/image';
+import { useTranslations } from 'next-intl';
 import { Routes } from '@/lib/routes';
 import { HomeStickyScroll } from '@/components/ui/home-sticky-scroll-reveal';
 import AceternityButton from '@/components/ui/aceternity-button';
@@ -70,6 +71,8 @@ const projects = [
 ];
 
 const Projects: FunctionComponent<ProjectsProps> = () => {
+	const t = useTranslations('HomePage');
+
 	return (
 		<>
 			<div className='hidden w-full lg:block'>
@@ -87,7 +90,10 @@ const Projects: FunctionComponent<ProjectsProps> = () => {
 						<p className='text-base sm:text-lg md:text-xl'>
 							{project.description}
 						</p>
-						<AceternityButton text='Learn more' link={project.link} />
+						<AceternityButton
+							text={t('learn-more-button')}
+							link={project.link}
+						/>
 
 						<div className='relative mt-6 aspect-square max-h-[400px] w-full rounded-md'>
 							<Image

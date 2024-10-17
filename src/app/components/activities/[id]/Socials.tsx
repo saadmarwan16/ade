@@ -1,13 +1,16 @@
 import { FunctionComponent } from 'react';
 import { Button } from '@/components/ui/button';
+import { useTranslations } from 'next-intl';
 
 interface SocialsProps {}
 
 const Socials: FunctionComponent<SocialsProps> = () => {
+	const t = useTranslations('ActivityDetailsPage');
+	
 	return (
 		<div className='flex justify-center'>
 			<div className='flex w-full max-w-4xl flex-col gap-2'>
-				<span className='text-lg font-medium'>Share: </span>
+				<span className='text-lg font-medium'>{t('share')}: </span>
 				<div className='flex flex-wrap gap-3 sm:hidden'>
 					<Button variant='outline' size='sm'>
 						Linkedin

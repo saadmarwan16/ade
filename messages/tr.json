@@ -1,0 +1,42 @@
+{
+	"Shared": {
+		"activities": "Etkinlikler",
+		"galleries": "Galeriler",
+		"know-me": "Beni tanı",
+		"rights": "Tüm hakları saklıdır"
+	},
+	"HomePage": {
+		"name": "Adım",
+		"learn-more-button": "Daha fazla",
+		"recent-activities": "Son Etkinlikler",
+		"view-all-button": "Hepsini görüntüle"
+	},
+	"ActivitiesPage": {
+		"all-tab": "Tümü",
+		"personal-tab": "Kişisel",
+		"social-tab": "Sosyal",
+		"political-tab": "Siyasal",
+		"professional-tab": "Profesyonel",
+		"see-more-button": "Daha fazla"
+	},
+	"ActivityDetailsPage": {
+		"share": "Paylaş"
+	},
+	"GalleriesPage": {
+		"photos": "Fotoğraf(lar)",
+		"see-more-button": "Daha fazla"
+	},
+	"GalleryDetailsPage": {
+		"photos": "Fotoğraf(lar)",
+		"galleries-link": "Galeriler"
+	},
+	"KnowMePage": {
+		"me": "HAKKIMDA BİRKAÇ BİLGİ",
+		"reach-out": "İletişime geç",
+		"name": "Ad...",
+		"email": "E-posta...",
+		"subject": "Konu...",
+		"message": "Mesajınızı buraya yazın...",
+		"send-message-button": "Mesaj gönder"
+	}
+}

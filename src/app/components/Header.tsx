@@ -4,23 +4,30 @@ import HeaderLanguage from './HeaderLanguage';
 import Hamburger from './Hamburger';
 import { Routes } from '@/lib/routes';
 import CustomAvatar from './CustomAvatar';
+import { useTranslations } from 'next-intl';
 
-const Header: FunctionComponent = () => {
+interface HeaderProps {
+	locale?: 'US' | 'FR' | 'TR';
+}
+
+const Header: FunctionComponent<HeaderProps> = ({ locale }) => {
+	const t = useTranslations('Shared');
+
 	return (
 		<header className='fixed z-10 flex h-16 w-full items-center bg-white/40 shadow-sm backdrop-blur-md sm:h-20 md:h-24'>
 			<div className='flex grow items-center justify-between px-5 sm:px-8'>
 				<CustomAvatar />
 
 				<div className='hidden gap-6 text-xl text-gray-600 md:flex'>
-					<Link href={Routes.ACTIVITIES}>Activities</Link>
-					<Link href={Routes.GALLERY}>Galleries</Link>
-					<Link href={Routes.KNOW_ME}>Know me</Link>
+					<Link href={Routes.ACTIVITIES}>{t('activities')}</Link>
+					<Link href={Routes.GALLERY}>{t('galleries')}</Link>
+					<Link href={Routes.KNOW_ME}>{t('know-me')}</Link>
 				</div>
 
 				<>
 					<Hamburger />
 					<div className='hidden md:block'>
-						<HeaderLanguage />
+						<HeaderLanguage locale={locale} />
 					</div>
 				</>
 			</div>

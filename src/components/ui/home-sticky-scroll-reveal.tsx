@@ -6,6 +6,7 @@ import { motion } from 'framer-motion';
 import { cn } from '@/lib/utils';
 import { Route } from 'next';
 import AceternityButton from './aceternity-button';
+import { useTranslations } from 'next-intl';
 
 export const HomeStickyScroll = ({
 	content,
@@ -20,6 +21,7 @@ export const HomeStickyScroll = ({
 	}[];
 	contentClassName?: string;
 }) => {
+	const t = useTranslations('HomePage');
 	const [activeCard, setActiveCard] = React.useState(0);
 	const ref = useRef<any>(null);
 	const { scrollYProgress } = useScroll({
@@ -79,7 +81,10 @@ export const HomeStickyScroll = ({
 							>
 								{item.description}
 							</motion.p>
-							<AceternityButton text='Learn more' link={item.link} />
+							<AceternityButton
+								text={t('learn-more-button')}
+								link={item.link}
+							/>
 						</div>
 					))}
 					<div className='h-40' />

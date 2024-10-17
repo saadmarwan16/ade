@@ -1,5 +1,6 @@
 import { FunctionComponent } from 'react';
 import { Permanent_Marker } from 'next/font/google';
+import { useTranslations } from 'next-intl';
 
 interface HeroProps {}
 
@@ -9,6 +10,8 @@ const permanentMarker = Permanent_Marker({
 });
 
 const Hero: FunctionComponent<HeroProps> = () => {
+	const t = useTranslations('KnowMePage');
+
 	return (
 		<div className='flex flex-col items-center text-center lg:w-full lg:items-start lg:text-left'>
 			<h2
@@ -17,7 +20,7 @@ const Hero: FunctionComponent<HeroProps> = () => {
 				ADE
 			</h2>
 			<h4 className='font-light text-gray-700 sm:text-lg md:text-xl lg:text-2xl'>
-				A BIT ABOUT ME
+				{t('me')}
 			</h4>
 		</div>
 	);

@@ -6,10 +6,13 @@ import Featured from '@/app/components/activities/Featured';
 import Tabs from '@/app/components/activities/Tabs';
 import Activities from '@/app/components/activities/Activities';
 import AceternityButton from '@/components/ui/aceternity-button';
+import { useTranslations } from 'next-intl';
 
 interface ActivitiesPageProps {}
 
 const ActivitiesPage: FunctionComponent<ActivitiesPageProps> = () => {
+	const t = useTranslations('ActivitiesPage');
+
 	return (
 		<BackgroundWrapper>
 			<div className='flex max-w-[1400px] flex-col gap-8 p-5 sm:gap-10 sm:px-8 sm:py-10 md:gap-12 lg:gap-16'>
@@ -18,7 +21,10 @@ const ActivitiesPage: FunctionComponent<ActivitiesPageProps> = () => {
 				<Separator className='bg-gray-400' />
 				<Tabs />
 				<Activities />
-				<AceternityButton text='See more' className='sm:place-self-end' />
+				<AceternityButton
+					text={t('see-more-button')}
+					className='sm:place-self-end'
+				/>
 			</div>
 		</BackgroundWrapper>
 	);

@@ -20,7 +20,7 @@ const RenderNextImage = (
 				alt={alt}
 				title={title}
 				sizes={sizes}
-                className='rounded-md md:rounded-lg'
+				className='rounded-md md:rounded-lg'
 				placeholder={'blurDataURL' in photo ? 'blur' : undefined}
 			/>
 		</div>
