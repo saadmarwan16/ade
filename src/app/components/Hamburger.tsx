@@ -4,13 +4,16 @@ import { FunctionComponent } from 'react';
 import { RxHamburgerMenu } from 'react-icons/rx';
 import { Drawer } from 'vaul';
 import { IoMdClose } from 'react-icons/io';
-import Link from 'next/link';
 import { Routes } from '@/lib/routes';
 import HeaderLanguage from './HeaderLanguage';
+import { useTranslations } from 'next-intl';
+import { Link } from '@/i18n/routing';
 
 interface HamburgerProps {}
 
 const Hamburger: FunctionComponent<HamburgerProps> = () => {
+	const t = useTranslations('Shared');
+
 	return (
 		<Drawer.Root direction='right'>
 			<Drawer.Trigger asChild>
@@ -36,7 +39,7 @@ const Hamburger: FunctionComponent<HamburgerProps> = () => {
 											className='duration-500 hover:scale-105'
 											href={Routes.HOME}
 										>
-											Home
+											{t('home')}
 										</Link>
 									</Drawer.Trigger>
 									<Drawer.Trigger asChild>
@@ -44,7 +47,7 @@ const Hamburger: FunctionComponent<HamburgerProps> = () => {
 											className='duration-500 hover:scale-105'
 											href={Routes.ACTIVITIES}
 										>
-											Activities
+											{t('activities')}
 										</Link>
 									</Drawer.Trigger>
 									<Drawer.Trigger asChild>
@@ -52,7 +55,7 @@ const Hamburger: FunctionComponent<HamburgerProps> = () => {
 											className='duration-500 hover:scale-105'
 											href={Routes.GALLERY}
 										>
-											Gallery
+											{t('galleries')}
 										</Link>
 									</Drawer.Trigger>
 									<Drawer.Trigger asChild>
@@ -60,7 +63,7 @@ const Hamburger: FunctionComponent<HamburgerProps> = () => {
 											className='duration-500 hover:scale-105'
 											href={Routes.KNOW_ME}
 										>
-											Know me
+											{t('know-me')}
 										</Link>
 									</Drawer.Trigger>
 								</div>

@@ -4,9 +4,9 @@ import React, { useRef } from 'react';
 import { useMotionValueEvent, useScroll } from 'framer-motion';
 import { motion } from 'framer-motion';
 import { cn } from '@/lib/utils';
-import { Route } from 'next';
 import AceternityButton from './aceternity-button';
 import { useTranslations } from 'next-intl';
+import { Pathnames } from '@/i18n/routing';
 
 export const HomeStickyScroll = ({
 	content,
@@ -15,7 +15,7 @@ export const HomeStickyScroll = ({
 	content: {
 		category: string;
 		title: string;
-		link: Route;
+		link: Pathnames;
 		description: string;
 		content?: React.ReactNode | any;
 	}[];

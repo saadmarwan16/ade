@@ -6,7 +6,7 @@ interface SocialsProps {}
 
 const Socials: FunctionComponent<SocialsProps> = () => {
 	const t = useTranslations('ActivityDetailsPage');
-	
+
 	return (
 		<div className='flex justify-center'>
 			<div className='flex w-full max-w-4xl flex-col gap-2'>

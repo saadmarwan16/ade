@@ -1,7 +1,7 @@
 import { FunctionComponent } from 'react';
 import Image from 'next/image';
-import Link from 'next/link';
 import { Routes } from '@/lib/routes';
+import { Link } from '@/i18n/routing';
 
 interface ActivitiesProps {}
 
@@ -10,7 +10,10 @@ const Activities: FunctionComponent<ActivitiesProps> = () => {
 		<div className='grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4'>
 			{[...Array(10)].map((_, index) => (
 				<Link
-					href={Routes.ACTIVITY_DETAILS('456')}
+					href={{
+						pathname: '/activities/[slug]',
+						params: { slug: '456' },
+					}}
 					key={index}
 					className='flex flex-col gap-2 duration-500 hover:scale-[1.03] hover:text-blue-900'
 				>

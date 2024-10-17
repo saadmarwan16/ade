@@ -8,9 +8,7 @@ interface HeaderLanguageProps {
 	locale?: 'US' | 'FR' | 'TR';
 }
 
-const HeaderLanguage: FunctionComponent<HeaderLanguageProps> = ({
-	locale,
-}) => {
+const HeaderLanguage: FunctionComponent<HeaderLanguageProps> = ({ locale }) => {
 	const [selected, setSelected] = useState<string>(locale ?? 'US');
 	const router = useRouter();
 

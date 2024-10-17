@@ -1,10 +1,10 @@
 import React, { FunctionComponent } from 'react';
-import Link from 'next/link';
 import HeaderLanguage from './HeaderLanguage';
 import Hamburger from './Hamburger';
 import { Routes } from '@/lib/routes';
 import CustomAvatar from './CustomAvatar';
 import { useTranslations } from 'next-intl';
+import { Link } from '@/i18n/routing';
 
 interface HeaderProps {
 	locale?: 'US' | 'FR' | 'TR';

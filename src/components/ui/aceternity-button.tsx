@@ -1,10 +1,9 @@
-import { Route } from 'next';
-import Link from 'next/link';
+import { Link, Pathnames } from '@/i18n/routing';
 import React, { FunctionComponent } from 'react';
 
 interface AceternityButtonProps {
 	text: string;
-	link?: Route;
+	link?: Pathnames;
 	onClick?: () => void;
 	className?: string;
 }

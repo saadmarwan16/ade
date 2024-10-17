@@ -1,10 +1,8 @@
 import { FunctionComponent } from 'react';
 import Image from 'next/image';
-import { Button } from '@/components/ui/button';
-import Link from 'next/link';
-import { Routes } from '@/lib/routes';
 import AceternityButton from '@/components/ui/aceternity-button';
 import { useTranslations } from 'next-intl';
+import { Link } from '@/i18n/routing';
 
 interface GalleriesProps {}
 
@@ -17,7 +15,10 @@ const Galleries: FunctionComponent<GalleriesProps> = () => {
 				{[...Array(10)].map((_, idx) => (
 					<Link
 						key={idx}
-						href={Routes.GALLERY_DETAILS('123')}
+						href={{
+							pathname: '/galleries/[slug]',
+							params: { slug: '456' },
+						}}
 						className='flex flex-col gap-2 duration-500 hover:scale-105 hover:text-blue-700'
 					>
 						<div className='relative aspect-video rounded-md'>

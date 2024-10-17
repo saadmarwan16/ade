@@ -1,8 +1,8 @@
 import { Routes } from '@/lib/routes';
-import Link from 'next/link';
 import { FunctionComponent } from 'react';
 import HeaderName from './HeaderName';
 import Image from 'next/image';
+import { Link } from '@/i18n/routing';
 
 interface CustomAvatarProps {}
 

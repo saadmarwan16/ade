@@ -1,6 +1,6 @@
 import { buttonVariants } from '@/components/ui/button';
+import { Link } from '@/i18n/routing';
 import { Routes } from '@/lib/routes';
-import Link from 'next/link';
 
 export default function NotFound() {
 	return (

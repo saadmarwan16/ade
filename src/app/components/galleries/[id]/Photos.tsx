@@ -2,7 +2,6 @@
 
 import { FunctionComponent, useState } from 'react';
 import { Routes } from '@/lib/routes';
-import Link from 'next/link';
 import {
 	Breadcrumb,
 	BreadcrumbItem,
@@ -19,6 +18,7 @@ import photos from '@/lib/photos';
 import Lightbox from '../../LightBox';
 import RenderNextImage from './RenderNextImage';
 import { useTranslations } from 'next-intl';
+import { Link } from '@/i18n/routing';
 
 interface PhotosProps {}
 

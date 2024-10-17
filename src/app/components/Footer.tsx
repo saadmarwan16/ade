@@ -1,10 +1,10 @@
 import CustomAvatar from '../components/CustomAvatar';
 import { IoLogoInstagram } from 'react-icons/io5';
 import { IoLogoLinkedin } from 'react-icons/io5';
-import Link from 'next/link';
 import { Routes } from '@/lib/routes';
 import { FunctionComponent } from 'react';
 import { useTranslations } from 'next-intl';
+import { Link } from '@/i18n/routing';
 
 interface FooterProps {}
 
@@ -18,20 +18,20 @@ const Footer: FunctionComponent<FooterProps> = () => {
 					<CustomAvatar />
 				</div>
 				<div className='flex gap-1 text-3xl sm:order-2 sm:place-self-end md:text-4xl'>
-					<Link
+					<a
 						href='https://instagram.com'
 						target='_blank'
 						className='duration-500 hover:scale-105'
 					>
 						<IoLogoInstagram className='text-rose-600' />
-					</Link>
-					<Link
+					</a>
+					<a
 						href='https://linkedin.com'
 						target='_blank'
 						className='duration-500 hover:scale-105'
 					>
 						<IoLogoLinkedin className='text-blue-800' />
-					</Link>
+					</a>
 				</div>
 				<span className='font-light sm:order-4 sm:place-self-end md:text-lg'>
 					Email: <span className='font-semibold'>info@ade.com</span>
