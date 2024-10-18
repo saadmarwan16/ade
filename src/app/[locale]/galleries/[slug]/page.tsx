@@ -1,18 +1,19 @@
 import BackgroundWrapper from '@/app/components/BackgroundWrapper';
-import Galleries from '@/app/components/galleries/Galleries';
-import Hero from '@/app/components/galleries/Hero';
+import Hero from '@/app/components/galleries/[id]/Hero';
+import Photos from '@/app/components/galleries/[id]/Photos';
 import { unstable_setRequestLocale } from 'next-intl/server';
 import { FunctionComponent } from 'react';
 
-interface GalleriesPageProps {
+interface GalleryDetailsPageProps {
 	params: {
 		locale: string;
+		id: string;
 	};
 }
 
 export async function generateMetadata({
 	params: { locale },
-}: GalleriesPageProps) {
+}: GalleryDetailsPageProps) {
 	// const t = await getTranslations({
 	// 	locale: locale,
 	// 	namespace: 'ActivitiesPage',
@@ -23,20 +24,24 @@ export async function generateMetadata({
 	};
 }
 
-const GalleriesPage: FunctionComponent<GalleriesPageProps> = ({
+export async function generateStaticParams() {
+	return [{ id: '123' }];
+}
+
+
+const GalleryDetailsPage: FunctionComponent<GalleryDetailsPageProps> = ({
 	params: { locale },
 }) => {
 	unstable_setRequestLocale(locale);
-	// throw new Error('404 Not Found'); // This is from the strapi api error object
 
 	return (
 		<BackgroundWrapper>
 			<div className='flex w-full flex-col gap-8 sm:gap-10 sm:py-10 md:gap-12 lg:items-center lg:gap-16'>
 				<Hero />
-				<Galleries />
+				<Photos />
 			</div>
 		</BackgroundWrapper>
 	);
 };
 
-export default GalleriesPage;
+export default GalleryDetailsPage;

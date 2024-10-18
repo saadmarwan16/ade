@@ -7,10 +7,31 @@ import Tabs from '@/app/components/activities/Tabs';
 import Activities from '@/app/components/activities/Activities';
 import AceternityButton from '@/components/ui/aceternity-button';
 import { useTranslations } from 'next-intl';
+import { unstable_setRequestLocale } from 'next-intl/server';
 
-interface ActivitiesPageProps {}
+interface ActivitiesPageProps {
+	params: {
+		locale: string;
+	};
+}
 
-const ActivitiesPage: FunctionComponent<ActivitiesPageProps> = () => {
+export async function generateMetadata({
+	params: { locale },
+}: ActivitiesPageProps) {
+	// const t = await getTranslations({
+	// 	locale: locale,
+	// 	namespace: 'ActivitiesPage',
+	// });
+
+	return {
+		locale: locale,
+	};
+}
+
+const ActivitiesPage: FunctionComponent<ActivitiesPageProps> = ({
+	params: { locale },
+}) => {
+	unstable_setRequestLocale(locale);
 	const t = useTranslations('ActivitiesPage');
 
 	return (

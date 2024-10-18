@@ -4,8 +4,28 @@ import Hero from '../components/home/Hero';
 import MeAndPartners from '../components/home/MeAndPartners';
 import Projects from '../components/home/Projects';
 import RecentActivities from '../components/home/RecentActivities';
+import { unstable_setRequestLocale } from 'next-intl/server';
+import { getTranslations } from 'next-intl/server';
 
-const Home: FunctionComponent = () => {
+interface HomeProps {
+	params: {
+		locale: string;
+	};
+}
+
+export async function generateMetadata({ params: { locale } }: HomeProps) {
+	// const t = await getTranslations({
+	// 	locale: locale,
+	// 	namespace: 'ActivitiesPage',
+	// });
+
+	return {
+		locale: locale,
+	};
+}
+
+const Home: FunctionComponent<HomeProps> = ({ params: { locale } }) => {
+	unstable_setRequestLocale(locale);
 	// throw new Error('Not implemented');
 
 	return (

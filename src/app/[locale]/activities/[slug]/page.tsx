@@ -3,11 +3,37 @@ import TitleCategories from '@/app/components/activities/[id]/TitleCategories';
 import CustomCarousel from '@/app/components/activities/[id]/CustomCarousel';
 import Content from '@/app/components/activities/[id]/Content';
 import Socials from '@/app/components/activities/[id]/Socials';
+import { unstable_setRequestLocale } from 'next-intl/server';
 // import { notFound } from 'next/navigation';
 
-interface ActivityDetailsPageProps {}
+interface ActivityDetailsPageProps {
+	params: {
+		locale: string;
+		id: string;
+	};
+}
 
-const ActivityDetailsPage: FunctionComponent<ActivityDetailsPageProps> = () => {
+export async function generateMetadata({
+	params: { locale },
+}: ActivityDetailsPageProps) {
+	// const t = await getTranslations({
+	// 	locale: locale,
+	// 	namespace: 'ActivitiesPage',
+	// });
+
+	return {
+		locale: locale,
+	};
+}
+
+export async function generateStaticParams() {
+	return [{ id: '123' }, { id: '456' }];
+}
+
+const ActivityDetailsPage: FunctionComponent<ActivityDetailsPageProps> = ({
+	params: { locale },
+}) => {
+	unstable_setRequestLocale(locale);
 	// notFound();
 
 	return (
@@ -21,9 +47,5 @@ const ActivityDetailsPage: FunctionComponent<ActivityDetailsPageProps> = () => {
 		</main>
 	);
 };
-
-export async function generateStaticParams() {
-	return [{ id: '123' }, { id: '456' }];
-}
 
 export default ActivityDetailsPage;

@@ -4,7 +4,8 @@ import Header from '../components/Header';
 import Footer from '../components/Footer';
 import { Inter } from 'next/font/google';
 import { NextIntlClientProvider } from 'next-intl';
-import { getMessages } from 'next-intl/server';
+import { getMessages, unstable_setRequestLocale } from 'next-intl/server';
+import { routing } from '@/i18n/routing';
 import '../globals.css';
 import { FunctionComponent, PropsWithChildren } from 'react';
 
@@ -25,10 +26,15 @@ const getLocale = (locale: string): 'US' | 'FR' | 'TR' | undefined => {
 	if (locale === 'tr') return 'TR';
 };
 
+export function generateStaticParams() {
+	return routing.locales.map((locale) => ({ locale }));
+}
+
 const RootLayout: FunctionComponent<RootLayoutProps> = async ({
 	children,
 	params: { locale },
 }) => {
+	unstable_setRequestLocale(locale);
 	const messages = await getMessages();
 
 	return (

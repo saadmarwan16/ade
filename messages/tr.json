@@ -25,11 +25,13 @@
 	},
 	"GalleriesPage": {
 		"photos": "Fotoğraf(lar)",
-		"see-more-button": "Daha fazla"
+		"see-more-button": "Daha fazla",
+		"description": "Galerilerimi görmek için aşağı doğru kaydırabilirsiniz"
 	},
 	"GalleryDetailsPage": {
 		"photos": "Fotoğraf(lar)",
-		"galleries-link": "Galeriler"
+		"galleries-link": "Galeriler",
+		"description": "Fotoğrafları görmek için aşağı doğru kaydırabilirsiniz"
 	},
 	"KnowMePage": {
 		"me": "HAKKIMDA BİRKAÇ BİLGİ",

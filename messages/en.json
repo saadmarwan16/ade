@@ -25,11 +25,13 @@
 	},
 	"GalleriesPage": {
 		"photos": "Photo(s)",
-		"see-more-button": "See more"
+		"see-more-button": "See more",
+		"description": "You can scroll down below to see my galleries"
 	},
 	"GalleryDetailsPage": {
 		"photos": "Photo(s)",
-		"galleries-link": "Galleries"
+		"galleries-link": "Galleries",
+		"description": "You can scroll down below to see the photos"
 	},
 	"KnowMePage": {
 		"me": "A BIT ABOUT ME",

@@ -25,11 +25,13 @@
 	},
 	"GalleriesPage": {
 		"photos": "Photo(s)",
-		"see-more-button": "Voir plus"
+		"see-more-button": "Voir plus",
+		"description": "Vous pouvez faire défiler vers le bas pour voir mes galeries"
 	},
 	"GalleryDetailsPage": {
 		"photos": "Photo(s)",
-		"galleries-link": "Galeries"
+		"galleries-link": "Galeries",
+		"description": "Vous pouvez faire défiler vers le bas pour voir les photos"
 	},
 	"KnowMePage": {
 		"me": "UN PEU SUR MOI",
