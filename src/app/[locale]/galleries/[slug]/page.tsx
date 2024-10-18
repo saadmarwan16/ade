@@ -28,7 +28,6 @@ export async function generateStaticParams() {
 	return [{ id: '123' }];
 }
 
-
 const GalleryDetailsPage: FunctionComponent<GalleryDetailsPageProps> = ({
 	params: { locale },
 }) => {
