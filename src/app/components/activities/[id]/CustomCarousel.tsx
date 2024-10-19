@@ -4,17 +4,25 @@ import 'react-responsive-carousel/lib/styles/carousel.min.css'; // requires a lo
 import { Carousel } from 'react-responsive-carousel';
 import Image from 'next/image';
 import { FunctionComponent } from 'react';
+import { TActivityDetailsImages } from '@/types/activity_details';
+import { constructImageLink } from '@/lib/constructLink';
 
-interface CustomCarouselProps {}
+interface CustomCarouselProps {
+	title: string;
+	images: TActivityDetailsImages;
+}
 
-const CustomCarousel: FunctionComponent<CustomCarouselProps> = () => {
+const CustomCarousel: FunctionComponent<CustomCarouselProps> = ({
+	title,
+	images,
+}) => {
 	return (
 		<Carousel showThumbs={false} swipeable className='mt-4 md:mt-6 lg:mt-8'>
-			{[...Array(6)].map((_, index) => (
-				<div key={index} className='aspect-video'>
+			{images.map((image, idx) => (
+				<div key={image.documentId} className='aspect-video'>
 					<Image
-						src='/activity.png'
-						alt={`Meeting the CEO of Cerrahi Hastane #${index + 1}`}
+						src={constructImageLink(image.url)}
+						alt={`Image #${idx + 1} of ${title}`}
 						className='rounded-lg'
 						fill
 					/>

@@ -1,77 +1,35 @@
 import React, { FunctionComponent } from 'react';
 import Image from 'next/image';
 import { useTranslations } from 'next-intl';
-import { Routes } from '@/lib/routes';
 import { HomeStickyScroll } from '@/components/ui/home-sticky-scroll-reveal';
-import AceternityButton from '@/components/ui/aceternity-button';
+import { TProjects } from '@/types/home_page';
+import { constructImageLink } from '@/lib/constructLink';
+import ExternalAceternityButton from '@/components/ui/external-aceternity-button';
 
-interface ProjectsProps {}
+interface ProjectsProps {
+	projects: TProjects;
+}
 
-const projects = [
-	{
-		category: 'Projects',
-		title: 'Partnering with PROV',
-		link: Routes.KNOW_ME,
-		description:
-			'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sed cupiditate nostrum. Lorem ipsum dolor sit,\
-             amet consectetur adipisicing elit. Sed cupiditate nostrum.',
-		image: '/me-1.jpg',
-		content: (
-			<div className='flex h-full w-full items-center justify-center text-white'>
-				<Image
-					src='/me-1.jpg'
-					width={300}
-					height={300}
-					className='h-full w-full object-cover'
-					alt='linear board demo'
-				/>
-			</div>
-		),
-	},
-	{
-		category: 'Companies',
-		title: 'Selling medical equipments and providing medical tourism',
-		link: Routes.KNOW_ME,
-		description:
-			'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sed cupiditate nostrum. Lorem ipsum dolor sit,\
-             amet consectetur adipisicing elit. Sed cupiditate nostrum.',
-		image: '/me-2.jpg',
-		content: (
-			<div className='flex h-full w-full items-center justify-center text-white'>
-				<Image
-					src='/me-2.jpg'
-					width={300}
-					height={300}
-					className='h-full w-full object-cover'
-					alt='linear board demo'
-				/>
-			</div>
-		),
-	},
-	{
-		category: 'NGOs',
-		title: 'Helping woman in Africa gain access to health care',
-		link: Routes.KNOW_ME,
-		description:
-			'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sed cupiditate nostrum. Lorem ipsum dolor sit,\
-             amet consectetur adipisicing elit. Sed cupiditate nostrum.',
-		image: '/me-1.jpg',
-		content: (
-			<div className='flex h-full w-full items-center justify-center text-white'>
-				<Image
-					src='/me-1.jpg'
-					width={300}
-					height={300}
-					className='h-full w-full object-cover'
-					alt='linear board demo'
-				/>
-			</div>
-		),
-	},
-];
-
-const Projects: FunctionComponent<ProjectsProps> = () => {
+const Projects: FunctionComponent<ProjectsProps> = (props) => {
 	const t = useTranslations('HomePage');
+	const projects = props.projects.map((project) => ({
+		category: project.type,
+		title: project.title,
+		link: project.link,
+		description: project.description,
+		image: constructImageLink(project.image.url),
+		content: (
+			<div className='flex h-full w-full items-center justify-center text-white'>
+				<Image
+					src={constructImageLink(project.image.url)}
+					width={300}
+					height={300}
+					className='h-full w-full object-cover'
+					alt={`Project ${project.id}`}
+				/>
+			</div>
+		),
+	}));
 
 	return (
 		<>
@@ -90,10 +48,12 @@ const Projects: FunctionComponent<ProjectsProps> = () => {
 						<p className='text-base sm:text-lg md:text-xl'>
 							{project.description}
 						</p>
-						<AceternityButton
-							text={t('learn-more-button')}
-							link={project.link}
-						/>
+						{project.link && (
+							<ExternalAceternityButton
+								text={t('learn-more-button')}
+								link={project.link}
+							/>
+						)}
 
 						<div className='relative mt-6 aspect-square max-h-[400px] w-full rounded-md'>
 							<Image

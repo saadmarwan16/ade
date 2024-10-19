@@ -15,6 +15,12 @@ const nextConfig = {
 				pathname: '**',
 			},
 			{
+				protocol: 'http',
+				hostname: 'localhost',
+				port: '1337',
+				pathname: '**',
+			},
+			{
 				protocol: 'https',
 				hostname: 'github.com',
 				pathname: '**',

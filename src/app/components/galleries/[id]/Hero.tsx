@@ -2,15 +2,17 @@ import { useTranslations } from 'next-intl';
 import { FunctionComponent } from 'react';
 import { RiArrowDownDoubleLine } from 'react-icons/ri';
 
-interface HeroProps {}
+interface HeroProps {
+	title: string;
+}
 
-const Hero: FunctionComponent<HeroProps> = () => {
+const Hero: FunctionComponent<HeroProps> = ({ title }) => {
 	const t = useTranslations('GalleryDetailsPage');
 
 	return (
 		<div className='flex w-full max-w-[1400px] flex-col gap-4 p-5 sm:px-8 lg:gap-10'>
 			<h2 className='max-w-[400px] text-3xl font-medium sm:text-4xl sm:font-semibold lg:max-w-[600px] lg:text-5xl'>
-				Meeting with the Minister of Health
+				{title}
 			</h2>
 
 			<div className='flex flex-col lg:gap-4'>

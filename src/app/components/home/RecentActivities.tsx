@@ -3,10 +3,15 @@ import Activities from '../activities/Activities';
 import AceternityButton from '@/components/ui/aceternity-button';
 import { useTranslations } from 'next-intl';
 import { Routes } from '@/lib/routes';
+import { TActivites } from '@/types/home_page';
 
-interface RecentActivitiesProps {}
+interface RecentActivitiesProps {
+	activities: TActivites;
+}
 
-const RecentActivities: FunctionComponent<RecentActivitiesProps> = () => {
+const RecentActivities: FunctionComponent<RecentActivitiesProps> = ({
+	activities,
+}) => {
 	const t = useTranslations('HomePage');
 
 	return (
@@ -14,7 +19,7 @@ const RecentActivities: FunctionComponent<RecentActivitiesProps> = () => {
 			<h3 className='text-2xl font-medium sm:text-3xl lg:text-4xl'>
 				{t('recent-activities')}
 			</h3>
-			<Activities />
+			<Activities activities={activities} />
 			<AceternityButton
 				text={t('view-all-button')}
 				className='sm:place-self-end'

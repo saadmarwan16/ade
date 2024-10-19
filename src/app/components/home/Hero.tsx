@@ -1,10 +1,18 @@
 import { FunctionComponent } from 'react';
 import Image from 'next/image';
 import { useTranslations } from 'next-intl';
+import { TAvatar } from '@/types/home_page';
+import { constructImageLink } from '@/lib/constructLink';
 
-interface HeroProps {}
+interface HeroProps {
+	first_avatar: TAvatar;
+	second_avatar: TAvatar;
+}
 
-const Hero: FunctionComponent<HeroProps> = () => {
+const Hero: FunctionComponent<HeroProps> = ({
+	first_avatar,
+	second_avatar,
+}) => {
 	const t = useTranslations('HomePage');
 
 	return (
@@ -20,8 +28,8 @@ const Hero: FunctionComponent<HeroProps> = () => {
 				<span className='inline lg:hidden'>o</span>
 				<span className='relative hidden aspect-square rounded-full lg:inline-block lg:w-24 xl:w-28'>
 					<Image
-						alt='Avatar 2'
-						src='https://github.com/shadcn.png'
+						alt={first_avatar.alt}
+						src={constructImageLink(first_avatar.image.url)}
 						fill
 						className='rounded-full'
 					/>
@@ -35,8 +43,8 @@ const Hero: FunctionComponent<HeroProps> = () => {
 				<span className='inline lg:hidden'>o</span>
 				<span className='relative hidden aspect-square rounded-full lg:inline-block lg:w-24 xl:w-28'>
 					<Image
-						alt='Avatar 3'
-						src='https://github.com/shadcn.png'
+						alt={second_avatar.alt}
+						src={constructImageLink(second_avatar.image.url)}
 						fill
 						className='rounded-full'
 					/>
