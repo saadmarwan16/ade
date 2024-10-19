@@ -22,8 +22,11 @@ const TitleCategories: FunctionComponent<TitleCategoriesProps> = ({
 				<div className='rounded-md border border-gray-700 px-2 py-0.5 text-sm sm:px-4 sm:py-1 sm:text-base'>
 					Political
 				</div> */}
-				{categories.map(({ title }) => (
-					<div className='rounded-md border border-gray-700 px-2 py-0.5 text-sm sm:px-4 sm:py-1 sm:text-base'>
+				{categories.map(({ id, title }) => (
+					<div
+						key={id}
+						className='rounded-md border border-gray-700 px-2 py-0.5 text-sm sm:px-4 sm:py-1 sm:text-base'
+					>
 						{title}
 					</div>
 				))}
