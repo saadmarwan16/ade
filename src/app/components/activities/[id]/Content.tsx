@@ -1,3 +1,5 @@
+'use client';
+
 import { TActivityDetailsBody } from '@/types/activity_details';
 import { FunctionComponent } from 'react';
 import { BlocksRenderer } from '@strapi/blocks-react-renderer';
@@ -9,27 +11,84 @@ interface ContentProps {
 const Content: FunctionComponent<ContentProps> = ({ body }) => {
 	return (
 		<div className='my-6 md:my-8 lg:my-10 lg:flex lg:justify-center'>
-			{/* TODO: The rich text block goes here instead of a paragraph */}
-			{/* <p className='max-w-4xl text-base sm:text-lg lg:text-xl xl:text-2xl'>
-				Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed egestas,
-				libero a vehicula tincidunt, risus metus bibendum lectus, nec lacinia
-				libero turpis at erat. Nulla facilisi. Phasellus nec nunc nec velit
-				lacinia ultricies. Sed auctor mauris nec purus accumsan, vel ultricies
-				libero varius. In ultrices, mi in lacinia tincidunt, ligula metus varius
-				libero, quis posuere nisl sapien nec nunc. Sed auctor mauris nec purus
-				accumsan, vel ultricies libero varius. In ultrices, mi in lacinia
-				tincidunt, ligula metus varius libero, quis posuere nisl sapien nec
-				nunc. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
-				egestas, libero a vehicula tincidunt, risus metus bibendum lectus, nec
-				lacinia libero turpis at erat. Nulla facilisi. Phasellus nec nunc nec
-				velit lacinia ultricies. Sed auctor mauris nec purus accumsan, vel
-				ultricies libero varius. In ultrices, mi in lacinia tincidunt, ligula
-				metus varius libero, quis posuere nisl sapien nec nunc. Sed auctor
-				mauris nec purus accumsan, vel ultricies libero varius. In ultrices, mi
-				in lacinia tincidunt, ligula metus varius libero, quis posuere nisl
-				sapien nec nunc.
-			</p> */}
-			<BlocksRenderer content={body} />
+			<div className='max-w-4xl'>
+				<BlocksRenderer
+					content={body}
+					blocks={{
+						paragraph: ({ children }) => (
+							<p className='text-base md:text-lg lg:text-xl xl:text-2xl'>
+								{children}
+							</p>
+						),
+						heading: ({ children, level }) => {
+							switch (level) {
+								case 1:
+									return (
+										<h1 className='text-4xl font-medium md:text-5xl lg:text-6xl'>
+											{children}
+										</h1>
+									);
+								case 2:
+									return (
+										<h2 className='text-3xl font-medium md:text-4xl lg:text-5xl'>
+											{children}
+										</h2>
+									);
+								case 3:
+									return (
+										<h3 className='text-2xl font-medium md:text-3xl lg:text-4xl'>
+											{children}
+										</h3>
+									);
+								case 4:
+									return (
+										<h4 className='text-xl font-medium md:text-2xl lg:text-3xl'>
+											{children}
+										</h4>
+									);
+								case 5:
+									return (
+										<h5 className='text-lg font-medium md:text-xl lg:text-2xl'>
+											{children}
+										</h5>
+									);
+								case 6:
+									return (
+										<h6 className='text-base font-medium md:text-lg lg:text-xl'>
+											{children}
+										</h6>
+									);
+								default:
+									return (
+										<p className='text-base font-medium md:text-lg'>
+											{children}
+										</p>
+									);
+							}
+						},
+						link: ({ children, url }) => (
+							<a href={url} target='_blank' className='text-blue-700 underline'>
+								{children}
+							</a>
+						),
+						list: ({ children, format }) => {
+							if (format === 'ordered') {
+								return (
+									<ol className='element-selector text-base md:text-lg lg:text-xl xl:text-2xl'>
+										{children}
+									</ol>
+								);
+							} else {
+								return (
+									<ul className='element-selector text-base md:text-lg lg:text-xl xl:text-2xl'>
+										{children}
+									</ul>
+								);
+							}
+						},
+					}}
+				/>
+			</div>
 		</div>
 	);
 };

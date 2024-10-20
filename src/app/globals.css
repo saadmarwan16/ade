@@ -82,3 +82,7 @@
 		animation-play-state: paused;
 	}
 }
+
+.element-selector {
+	all: revert;
+}

@@ -13,15 +13,6 @@ const TitleCategories: FunctionComponent<TitleCategoriesProps> = ({
 	return (
 		<>
 			<div className='flex flex-wrap gap-2 sm:gap-4'>
-				{/* <div className='rounded-md border border-gray-700 px-2 py-0.5 text-sm sm:px-4 sm:py-1 sm:text-base'>
-					Personal
-				</div>
-				<div className='rounded-md border border-gray-700 px-2 py-0.5 text-sm sm:px-4 sm:py-1 sm:text-base'>
-					Social
-				</div>
-				<div className='rounded-md border border-gray-700 px-2 py-0.5 text-sm sm:px-4 sm:py-1 sm:text-base'>
-					Political
-				</div> */}
 				{categories.map(({ id, title }) => (
 					<div
 						key={id}
