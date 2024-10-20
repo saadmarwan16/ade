@@ -33,3 +33,16 @@ export const ImageSchema = z.object({
 	documentId: z.string(),
 	url: z.string(),
 });
+
+export const MetaSchema = z.object({
+	pagination: z.object({
+		page: z.number(),
+		pageSize: z.number(),
+		pageCount: z.number(),
+		total: z.number(),
+	}),
+});
+
+export type TSeo = z.infer<typeof SeoSchema>;
+export type TImage = z.infer<typeof ImageSchema>;
+export type TMeta = z.infer<typeof MetaSchema>;

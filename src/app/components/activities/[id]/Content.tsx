@@ -60,7 +60,7 @@ const Content: FunctionComponent<ContentProps> = ({ body }) => {
 									);
 								default:
 									return (
-										<p className='text-base font-medium md:text-lg'>
+										<p className='text-base md:text-lg lg:text-xl xl:text-2xl'>
 											{children}
 										</p>
 									);
@@ -74,13 +74,13 @@ const Content: FunctionComponent<ContentProps> = ({ body }) => {
 						list: ({ children, format }) => {
 							if (format === 'ordered') {
 								return (
-									<ol className='element-selector text-base md:text-lg lg:text-xl xl:text-2xl'>
+									<ol className='revert-tailwind text-base md:text-lg lg:text-xl'>
 										{children}
 									</ol>
 								);
 							} else {
 								return (
-									<ul className='element-selector text-base md:text-lg lg:text-xl xl:text-2xl'>
+									<ul className='revert-tailwind text-base md:text-lg lg:text-xl'>
 										{children}
 									</ul>
 								);

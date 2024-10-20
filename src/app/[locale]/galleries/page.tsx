@@ -1,6 +1,10 @@
 import BackgroundWrapper from '@/app/components/BackgroundWrapper';
 import Galleries from '@/app/components/galleries/Galleries';
 import Hero from '@/app/components/galleries/Hero';
+import { env } from '@/env';
+import { fetchWithZod } from '@/lib/fetchWithZod';
+import { galleriesPageQuery } from '@/queries/galleries_page';
+import { GalleriesPageSchema } from '@/types/galleries_page';
 import { unstable_setRequestLocale } from 'next-intl/server';
 import { FunctionComponent } from 'react';
 
@@ -23,17 +27,21 @@ export async function generateMetadata({
 	};
 }
 
-const GalleriesPage: FunctionComponent<GalleriesPageProps> = ({
+const GalleriesPage: FunctionComponent<GalleriesPageProps> = async ({
 	params: { locale },
 }) => {
 	unstable_setRequestLocale(locale);
 	// throw new Error('404 Not Found'); // This is from the strapi api error object
+	const { data } = await fetchWithZod(
+		GalleriesPageSchema,
+		`${env.NEXT_PUBLIC_API_URL}/galleries-page?${galleriesPageQuery(locale)}`
+	);
 
 	return (
 		<BackgroundWrapper>
 			<div className='flex w-full flex-col gap-8 sm:gap-10 sm:py-10 md:gap-12 lg:items-center lg:gap-16'>
-				<Hero />
-				<Galleries />
+				<Hero title={data.title} />
+				<Galleries locale={locale} />
 			</div>
 		</BackgroundWrapper>
 	);
