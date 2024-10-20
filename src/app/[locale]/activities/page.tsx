@@ -1,16 +1,16 @@
-import { FunctionComponent } from 'react';
+import { FunctionComponent, Suspense } from 'react';
 import { Separator } from '@/components/ui/separator';
 import BackgroundWrapper from '@/app/components/BackgroundWrapper';
 import HeroTitle from '@/app/components/activities/HeroTitle';
 import Featured from '@/app/components/activities/Featured';
 import Tabs from '@/app/components/activities/Tabs';
 import Activities from '@/app/components/activities/Activities';
-import AceternityButton from '@/components/ui/aceternity-button';
 import { getTranslations, unstable_setRequestLocale } from 'next-intl/server';
 import { fetchWithZod } from '@/lib/fetchWithZod';
 import { ActivitiesPageSchema } from '@/types/activities_page';
 import { env } from '@/env';
 import { activitiesPageQuery } from '@/queries/activities_page';
+import ActivitiesSkeleton from '@/app/components/ActivitiesSkeleton';
 
 interface ActivitiesPageProps {
 	params: {
@@ -43,16 +43,14 @@ const ActivitiesPage: FunctionComponent<ActivitiesPageProps> = async ({
 
 	return (
 		<BackgroundWrapper>
-			<div className='flex max-w-[1400px] flex-col gap-8 p-5 sm:gap-10 sm:px-8 sm:py-10 md:gap-12 lg:gap-16'>
+			<div className='flex w-full max-w-[1400px] flex-col gap-8 p-5 sm:gap-10 sm:px-8 sm:py-10 md:gap-12 lg:gap-16'>
 				<HeroTitle title={data.title} />
 				<Featured activity={data.featured_activity} />
 				<Separator className='bg-gray-400' />
 				<Tabs />
-				<Activities locale={locale} />
-				<AceternityButton
-					text={t('see-more-button')}
-					className='sm:place-self-end'
-				/>
+				<Suspense fallback={<ActivitiesSkeleton />}>
+					<Activities locale={locale} />
+				</Suspense>
 			</div>
 		</BackgroundWrapper>
 	);
