@@ -1,14 +1,22 @@
 import { FunctionComponent } from 'react';
 import Image from 'next/image';
 import { Link } from '@/i18n/routing';
-import { TActivites } from '@/types/home_page';
 import { constructImageLink } from '@/lib/constructLink';
+import { fetchWithZod } from '@/lib/fetchWithZod';
+import { ActivitiesSchema } from '@/types/activities';
+import { env } from '@/env';
+import { activitiesQuery } from '@/queries/activities';
 
 interface ActivitiesProps {
-	activities: TActivites;
+	locale: string;
 }
 
-const Activities: FunctionComponent<ActivitiesProps> = ({ activities }) => {
+const Activities: FunctionComponent<ActivitiesProps> = async ({ locale }) => {
+	const { data: activities } = await fetchWithZod(
+		ActivitiesSchema,
+		`${env.NEXT_PUBLIC_API_URL}/activities?${activitiesQuery(locale)}`
+	);
+
 	return (
 		<div className='grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4'>
 			{activities.map((activity) => (

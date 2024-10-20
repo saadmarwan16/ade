@@ -1,11 +1,13 @@
 import { FunctionComponent } from 'react';
 
-interface HeroTitleProps {}
+interface HeroTitleProps {
+	title: string;
+}
 
-const HeroTitle: FunctionComponent<HeroTitleProps> = () => {
+const HeroTitle: FunctionComponent<HeroTitleProps> = ({ title }) => {
 	return (
 		<h1 className='max-w-[600px] text-3xl font-medium sm:text-4xl lg:text-5xl'>
-			My personal, social, professional & political activities
+			{title}
 		</h1>
 	);
 };

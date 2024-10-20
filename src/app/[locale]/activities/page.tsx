@@ -6,8 +6,11 @@ import Featured from '@/app/components/activities/Featured';
 import Tabs from '@/app/components/activities/Tabs';
 import Activities from '@/app/components/activities/Activities';
 import AceternityButton from '@/components/ui/aceternity-button';
-import { useTranslations } from 'next-intl';
-import { unstable_setRequestLocale } from 'next-intl/server';
+import { getTranslations, unstable_setRequestLocale } from 'next-intl/server';
+import { fetchWithZod } from '@/lib/fetchWithZod';
+import { ActivitiesPageSchema } from '@/types/activities_page';
+import { env } from '@/env';
+import { activitiesPageQuery } from '@/queries/activities_page';
 
 interface ActivitiesPageProps {
 	params: {
@@ -28,20 +31,24 @@ export async function generateMetadata({
 	};
 }
 
-const ActivitiesPage: FunctionComponent<ActivitiesPageProps> = ({
+const ActivitiesPage: FunctionComponent<ActivitiesPageProps> = async ({
 	params: { locale },
 }) => {
 	unstable_setRequestLocale(locale);
-	const t = useTranslations('ActivitiesPage');
+	const t = await getTranslations('ActivitiesPage');
+	const { data } = await fetchWithZod(
+		ActivitiesPageSchema,
+		`${env.NEXT_PUBLIC_API_URL}/activities-page?${activitiesPageQuery(locale)}`
+	);
 
 	return (
 		<BackgroundWrapper>
 			<div className='flex max-w-[1400px] flex-col gap-8 p-5 sm:gap-10 sm:px-8 sm:py-10 md:gap-12 lg:gap-16'>
-				<HeroTitle />
-				<Featured />
+				<HeroTitle title={data.title} />
+				<Featured activity={data.featured_activity} />
 				<Separator className='bg-gray-400' />
 				<Tabs />
-				<Activities />
+				<Activities locale={locale} />
 				<AceternityButton
 					text={t('see-more-button')}
 					className='sm:place-self-end'
