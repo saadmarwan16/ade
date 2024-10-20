@@ -1,12 +1,13 @@
 import BackgroundWrapper from '@/app/components/BackgroundWrapper';
 import Galleries from '@/app/components/galleries/Galleries';
 import Hero from '@/app/components/galleries/Hero';
+import GalleriesSkeleton from '@/app/components/GalleriesSkeleton';
 import { env } from '@/env';
 import { fetchWithZod } from '@/lib/fetchWithZod';
 import { galleriesPageQuery } from '@/queries/galleries_page';
 import { GalleriesPageSchema } from '@/types/galleries_page';
 import { unstable_setRequestLocale } from 'next-intl/server';
-import { FunctionComponent } from 'react';
+import { FunctionComponent, Suspense } from 'react';
 
 interface GalleriesPageProps {
 	params: {
@@ -41,7 +42,10 @@ const GalleriesPage: FunctionComponent<GalleriesPageProps> = async ({
 		<BackgroundWrapper>
 			<div className='flex w-full flex-col gap-8 sm:gap-10 sm:py-10 md:gap-12 lg:items-center lg:gap-16'>
 				<Hero title={data.title} />
-				<Galleries locale={locale} />
+
+				<Suspense fallback={<GalleriesSkeleton />}>
+					<Galleries locale={locale} />
+				</Suspense>
 			</div>
 		</BackgroundWrapper>
 	);
