@@ -83,7 +83,7 @@ const GalleriesClient: FunctionComponent<GalleriesClientProps> = ({
 			))}
 			{isValidating && (
 				<>
-					{[...Array(12)].map((idx) => (
+					{[...Array(12)].map((_, idx) => (
 						<Skeleton key={idx} className='aspect-video' />
 					))}
 				</>
