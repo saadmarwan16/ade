@@ -11,11 +11,15 @@ import { ActivitiesPageSchema } from '@/types/activities_page';
 import { env } from '@/env';
 import { activitiesPageQuery } from '@/queries/activities_page';
 import ActivitiesSkeleton from '@/app/components/ActivitiesSkeleton';
+import { capitalizeCategory } from '@/lib/capitalizeCategory';
+
+type Category = 'all' | 'personal' | 'professional' | 'social' | 'political';
 
 interface ActivitiesPageProps {
 	params: {
 		locale: string;
 	};
+	searchParams: { category: Category };
 }
 
 export async function generateMetadata({
@@ -33,9 +37,11 @@ export async function generateMetadata({
 
 const ActivitiesPage: FunctionComponent<ActivitiesPageProps> = async ({
 	params: { locale },
+	searchParams,
 }) => {
 	unstable_setRequestLocale(locale);
 	const t = await getTranslations('ActivitiesPage');
+	const category = capitalizeCategory(searchParams.category);
 	const { data } = await fetchWithZod(
 		ActivitiesPageSchema,
 		`${env.NEXT_PUBLIC_API_URL}/activities-page?${activitiesPageQuery(locale)}`
@@ -47,9 +53,9 @@ const ActivitiesPage: FunctionComponent<ActivitiesPageProps> = async ({
 				<HeroTitle title={data.title} />
 				<Featured activity={data.featured_activity} />
 				<Separator className='bg-gray-400' />
-				<Tabs />
+				<Tabs category={category} />
 				<Suspense fallback={<ActivitiesSkeleton />}>
-					<Activities locale={locale} />
+					<Activities locale={locale} category={category} />
 				</Suspense>
 			</div>
 		</BackgroundWrapper>

@@ -1,6 +1,5 @@
+import { Category } from '@/lib/capitalizeCategory';
 import qs from 'qs';
-
-type Category = 'All' | 'Personal' | 'Professional' | 'Social' | 'Political';
 
 export const activitiesQuery = (
 	locale: string = 'en',

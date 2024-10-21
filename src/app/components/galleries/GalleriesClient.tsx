@@ -11,7 +11,6 @@ import useSWRInfinite from 'swr/infinite';
 import { galleriesQuery } from '@/queries/galleries';
 import { env } from '@/env';
 import { fetchWithZod } from '@/lib/fetchWithZod';
-import GalleriesSkeleton from '../GalleriesSkeleton';
 import { Skeleton } from '@/components/ui/skeleton';
 
 interface GalleriesClientProps {
@@ -84,7 +83,7 @@ const GalleriesClient: FunctionComponent<GalleriesClientProps> = ({
 			))}
 			{isValidating && (
 				<>
-					{[...Array(24)].map((idx) => (
+					{[...Array(12)].map((idx) => (
 						<Skeleton key={idx} className='aspect-video' />
 					))}
 				</>
