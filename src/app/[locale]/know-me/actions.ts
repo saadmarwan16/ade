@@ -9,7 +9,6 @@ import { z } from 'zod';
 export const sendMessage = actionClient
 	.schema(SendMessageSchema)
 	.action(async ({ parsedInput }) => {
-		console.log('Parsed input:', parsedInput);
 		await fetchWithZod(z.object({}), `${env.NEXT_PUBLIC_API_URL}/messages`, {
 			method: 'POST',
 			body: JSON.stringify({ data: parsedInput }),
@@ -17,8 +16,6 @@ export const sendMessage = actionClient
 				'Content-Type': 'application/json',
 			},
 		});
-
-		// revalidatePath('/');
 
 		return 'Message sent successfully';
 	});

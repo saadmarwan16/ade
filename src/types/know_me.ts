@@ -25,7 +25,7 @@ export const SendMessageSchema = zfd.formData({
 			.min(2, 'Subject must be at least 2 characters long')
 			.max(400, 'Subject must be at most 400 characters long')
 	),
-	message: zfd.text(
+	content: zfd.text(
 		z
 			.string({
 				required_error: 'Message is required',

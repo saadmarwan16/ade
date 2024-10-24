@@ -38,6 +38,7 @@ const ReachOut: FunctionComponent<ReachOutProps> = () => {
 					<Input
 						className='md:text-lg md:placeholder:text-lg'
 						type='text'
+						name='name'
 						placeholder={t('name')}
 					/>
 					{result.validationErrors?.name?._errors?.map((error, idx) => (
@@ -54,6 +55,7 @@ const ReachOut: FunctionComponent<ReachOutProps> = () => {
 					<Input
 						className='md:text-lg md:placeholder:text-lg'
 						type='email'
+						name='email'
 						placeholder={t('email')}
 					/>
 					{result.validationErrors?.email?._errors?.map((error, idx) => (
@@ -70,6 +72,7 @@ const ReachOut: FunctionComponent<ReachOutProps> = () => {
 					<Input
 						className='md:text-lg md:placeholder:text-lg'
 						type='text'
+						name='subject'
 						placeholder={t('subject')}
 					/>
 					{result.validationErrors?.subject?._errors?.map((error, idx) => (
@@ -85,10 +88,11 @@ const ReachOut: FunctionComponent<ReachOutProps> = () => {
 				<div className='grid w-full items-center gap-2 md:col-span-2'>
 					<Textarea
 						className='md:text-lg md:placeholder:text-lg'
+						name='content'
 						placeholder={t('message')}
 						rows={6}
 					/>
-					{result.validationErrors?.message?._errors?.map((error, idx) => (
+					{result.validationErrors?.content?._errors?.map((error, idx) => (
 						<Label
 							key={idx}
 							htmlFor='title'

@@ -3,10 +3,14 @@ import { FunctionComponent } from 'react';
 import HeaderName from './HeaderName';
 import Image from 'next/image';
 import { Link } from '@/i18n/routing';
+import { constructImageLink } from '@/lib/constructLink';
+import { TAvatar } from '@/types/meta';
 
-interface CustomAvatarProps {}
+interface CustomAvatarProps {
+	avatar: TAvatar;
+}
 
-const CustomAvatar: FunctionComponent<CustomAvatarProps> = () => {
+const CustomAvatar: FunctionComponent<CustomAvatarProps> = ({ avatar }) => {
 	return (
 		<Link
 			href={Routes.HOME}
@@ -14,8 +18,8 @@ const CustomAvatar: FunctionComponent<CustomAvatarProps> = () => {
 		>
 			<div className='relative aspect-square w-12 rounded-full md:w-16'>
 				<Image
-					src='https://github.com/shadcn.png'
-					alt='Avatar 1'
+					src={constructImageLink(avatar.image.url)}
+					alt={avatar.alt}
 					className='rounded-full'
 					fill
 				/>
