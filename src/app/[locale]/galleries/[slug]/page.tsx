@@ -2,10 +2,13 @@ import BackgroundWrapper from '@/app/components/BackgroundWrapper';
 import Hero from '@/app/components/galleries/[id]/Hero';
 import Photos from '@/app/components/galleries/[id]/Photos';
 import { env } from '@/env';
+import { constructMetadata } from '@/lib/constructMetadata';
 import { fetchWithZod } from '@/lib/fetchWithZod';
-// import { galleriesQuery } from '@/queries/galleries';
+import { galleriesQuery } from '@/queries/galleries';
 import { galleryDetailsQuery } from '@/queries/gallery_details';
+import { GalleriesSchema } from '@/types/galleries';
 import { GalleryDetailsSchema } from '@/types/gallery_details';
+import { Metadata } from 'next';
 import { unstable_setRequestLocale } from 'next-intl/server';
 import { FunctionComponent } from 'react';
 
@@ -16,29 +19,29 @@ interface GalleryDetailsPageProps {
 	};
 }
 
-export async function generateMetadata({
-	params: { locale },
-}: GalleryDetailsPageProps) {
-	// const t = await getTranslations({
-	// 	locale: locale,
-	// 	namespace: 'ActivitiesPage',
-	// });
+export const generateMetadata = async ({
+	params: { locale, slug },
+}: GalleryDetailsPageProps): Promise<Metadata> => {
+	const {
+		data: { seo },
+	} = await fetchWithZod(
+		GalleryDetailsSchema,
+		`${env.NEXT_PUBLIC_API_URL}/galleries/${slug}?${galleryDetailsQuery(locale)}`
+	);
 
-	return {
-		locale: locale,
-	};
-}
+	return constructMetadata(seo, `/galleries/${slug}`);
+};
 
-export async function generateStaticParams({
+export const generateStaticParams = async ({
 	params: { locale },
-}: GalleryDetailsPageProps) {
-	// const { data } = await fetchWithZod(
-	// 	GalleryDetailsSchema,
-	// 	`${env.NEXT_PUBLIC_API_URL}/know-me?${galleriesQuery(locale)}`
-	// );
-	// data.
-	return [{ id: '123' }];
-}
+}: GalleryDetailsPageProps): Promise<{ locale: string; slug: string }[]> => {
+	const { data } = await fetchWithZod(
+		GalleriesSchema,
+		`${env.NEXT_PUBLIC_API_URL}/galleries?${galleriesQuery(locale)}`
+	);
+
+	return data.map((gallery) => ({ slug: gallery.slug, locale }));
+};
 
 const GalleryDetailsPage: FunctionComponent<GalleryDetailsPageProps> = async ({
 	params: { locale, slug },

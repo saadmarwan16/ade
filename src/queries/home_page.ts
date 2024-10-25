@@ -45,7 +45,7 @@ export const homePageQuery = (locale: string = 'en') =>
 						metaSocial: {
 							populate: {
 								image: {
-									fields: ['url'],
+									fields: ['url', 'width', 'height'],
 								},
 							},
 						},

@@ -12,6 +12,8 @@ import { env } from '@/env';
 import { activitiesPageQuery } from '@/queries/activities_page';
 import ActivitiesSkeleton from '@/app/components/ActivitiesSkeleton';
 import { capitalizeCategory } from '@/lib/capitalizeCategory';
+import { Metadata } from 'next';
+import { constructMetadata } from '@/lib/constructMetadata';
 
 type Category = 'all' | 'personal' | 'professional' | 'social' | 'political';
 
@@ -22,18 +24,18 @@ interface ActivitiesPageProps {
 	searchParams: { category: Category };
 }
 
-export async function generateMetadata({
+export const generateMetadata = async ({
 	params: { locale },
-}: ActivitiesPageProps) {
-	// const t = await getTranslations({
-	// 	locale: locale,
-	// 	namespace: 'ActivitiesPage',
-	// });
+}: ActivitiesPageProps): Promise<Metadata> => {
+	const {
+		data: { seo },
+	} = await fetchWithZod(
+		ActivitiesPageSchema,
+		`${env.NEXT_PUBLIC_API_URL}/activities-page?${activitiesPageQuery(locale)}`
+	);
 
-	return {
-		locale: locale,
-	};
-}
+	return constructMetadata(seo, '/activities');
+};
 
 const ActivitiesPage: FunctionComponent<ActivitiesPageProps> = async ({
 	params: { locale },

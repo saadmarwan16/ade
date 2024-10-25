@@ -44,5 +44,5 @@ export type Pathnames = keyof typeof pathnames;
 
 export type Locale = (typeof routing.locales)[number];
 
-export const { Link, redirect, usePathname, useRouter } =
+export const { Link, redirect, usePathname, useRouter, getPathname } =
 	createLocalizedPathnamesNavigation(routing);

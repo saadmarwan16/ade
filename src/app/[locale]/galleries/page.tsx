@@ -3,9 +3,12 @@ import Galleries from '@/app/components/galleries/Galleries';
 import Hero from '@/app/components/galleries/Hero';
 import GalleriesSkeleton from '@/app/components/GalleriesSkeleton';
 import { env } from '@/env';
+import { getPathname } from '@/i18n/routing';
+import { constructMetadata } from '@/lib/constructMetadata';
 import { fetchWithZod } from '@/lib/fetchWithZod';
 import { galleriesPageQuery } from '@/queries/galleries_page';
 import { GalleriesPageSchema } from '@/types/galleries_page';
+import { Metadata } from 'next';
 import { unstable_setRequestLocale } from 'next-intl/server';
 import { FunctionComponent, Suspense } from 'react';
 
@@ -15,18 +18,18 @@ interface GalleriesPageProps {
 	};
 }
 
-export async function generateMetadata({
+export const generateMetadata = async ({
 	params: { locale },
-}: GalleriesPageProps) {
-	// const t = await getTranslations({
-	// 	locale: locale,
-	// 	namespace: 'ActivitiesPage',
-	// });
+}: GalleriesPageProps): Promise<Metadata> => {
+	const {
+		data: { seo },
+	} = await fetchWithZod(
+		GalleriesPageSchema,
+		`${env.NEXT_PUBLIC_API_URL}/galleries-page?${galleriesPageQuery(locale)}`
+	);
 
-	return {
-		locale: locale,
-	};
-}
+	return constructMetadata(seo, '/galleries');
+};
 
 const GalleriesPage: FunctionComponent<GalleriesPageProps> = async ({
 	params: { locale },

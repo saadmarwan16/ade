@@ -8,6 +8,10 @@ import { fetchWithZod } from '@/lib/fetchWithZod';
 import { ActivityDetailsSchema } from '@/types/activity_details';
 import { env } from '@/env';
 import { activityDetailsQuery } from '@/queries/activity_details';
+import { Metadata } from 'next';
+import { constructMetadata } from '@/lib/constructMetadata';
+import { ActivitiesSchema } from '@/types/activities';
+import { activitiesQuery } from '@/queries/activities';
 // import { notFound } from 'next/navigation';
 
 interface ActivityDetailsPageProps {
@@ -17,22 +21,29 @@ interface ActivityDetailsPageProps {
 	};
 }
 
-export async function generateMetadata({
+export const generateMetadata = async ({
+	params: { locale, slug },
+}: ActivityDetailsPageProps): Promise<Metadata> => {
+	const {
+		data: { seo },
+	} = await fetchWithZod(
+		ActivityDetailsSchema,
+		`${env.NEXT_PUBLIC_API_URL}/activities/${slug}?${activityDetailsQuery(locale)}`
+	);
+
+	return constructMetadata(seo, `/activities/${slug}`);
+};
+
+export const generateStaticParams = async ({
 	params: { locale },
-}: ActivityDetailsPageProps) {
-	// const t = await getTranslations({
-	// 	locale: locale,
-	// 	namespace: 'ActivitiesPage',
-	// });
+}: ActivityDetailsPageProps): Promise<{ locale: string; slug: string }[]> => {
+	const { data } = await fetchWithZod(
+		ActivitiesSchema,
+		`${env.NEXT_PUBLIC_API_URL}/activities?${activitiesQuery(locale)}`
+	);
 
-	return {
-		locale: locale,
-	};
-}
-
-export async function generateStaticParams() {
-	return [{ id: '123' }, { id: '456' }];
-}
+	return data.map((activity) => ({ slug: activity.slug, locale }));
+};
 
 const ActivityDetailsPage: FunctionComponent<
 	ActivityDetailsPageProps

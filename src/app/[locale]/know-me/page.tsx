@@ -3,9 +3,12 @@ import Content from '@/app/components/know-me/Content';
 import Hero from '@/app/components/know-me/Hero';
 import ReachOut from '@/app/components/know-me/ReachOut';
 import { env } from '@/env';
+import { getPathname } from '@/i18n/routing';
+import { constructMetadata } from '@/lib/constructMetadata';
 import { fetchWithZod } from '@/lib/fetchWithZod';
 import { knowMePageQuery } from '@/queries/know_me_page';
 import { KnowMeSchema } from '@/types/know_me_page';
+import { Metadata } from 'next';
 import { unstable_setRequestLocale } from 'next-intl/server';
 import { FunctionComponent } from 'react';
 
@@ -15,18 +18,18 @@ interface KnowMePageProps {
 	};
 }
 
-export async function generateMetadata({
+export const generateMetadata = async ({
 	params: { locale },
-}: KnowMePageProps) {
-	// const t = await getTranslations({
-	// 	locale: locale,
-	// 	namespace: 'ActivitiesPage',
-	// });
+}: KnowMePageProps): Promise<Metadata> => {
+	const {
+		data: { seo },
+	} = await fetchWithZod(
+		KnowMeSchema,
+		`${env.NEXT_PUBLIC_API_URL}/know-me?${knowMePageQuery(locale)}`
+	);
 
-	return {
-		locale: locale,
-	};
-}
+	return constructMetadata(seo, '/know-me');
+};
 
 const KnowMePage: FunctionComponent<KnowMePageProps> = async ({
 	params: { locale },

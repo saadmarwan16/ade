@@ -1,5 +1,21 @@
 import { z } from 'zod';
 
+export const MetaSocialSchema = z.object({
+	id: z.number(),
+	socialNetwork: z.enum(['Facebook', 'Twitter']),
+	title: z.string(),
+	description: z.string(),
+	image: z
+		.object({
+			id: z.number(),
+			documentId: z.string(),
+			url: z.string(),
+			width: z.number(),
+			height: z.number(),
+		})
+		.nullable(),
+});
+
 export const SeoSchema = z.object({
 	id: z.number(),
 	metaTitle: z.string(),
@@ -9,16 +25,7 @@ export const SeoSchema = z.object({
 	structuredData: z.null(),
 	metaViewport: z.string().nullable(),
 	canonicalURL: z.string().nullable(),
-	metaSocial: z
-		.array(
-			z.object({
-				id: z.number(),
-				socialNetwork: z.string(),
-				title: z.string(),
-				description: z.string(),
-			})
-		)
-		.nullable(),
+	metaSocial: z.array(MetaSocialSchema).nullable(),
 	metaImage: z
 		.object({
 			id: z.number(),
@@ -43,6 +50,7 @@ export const MetaSchema = z.object({
 	}),
 });
 
+export type TMetaSocial = z.infer<typeof MetaSocialSchema>;
 export type TSeo = z.infer<typeof SeoSchema>;
 export type TImage = z.infer<typeof ImageSchema>;
 export type TMeta = z.infer<typeof MetaSchema>;
