@@ -19,5 +19,5 @@ export const getAllActivities = async (locale: string = 'en') => {
 		`${env.NEXT_PUBLIC_API_URL}/activities?${activitiesQuery(locale)}`
 	);
 
-    return activities;
+	return activities;
 };
