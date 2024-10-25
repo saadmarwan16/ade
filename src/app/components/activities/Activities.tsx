@@ -5,7 +5,9 @@ import { env } from '@/env';
 import { activitiesQuery } from '@/queries/activities';
 import ActivitiesClient from './ActivitiesClient';
 // import { CiBatteryEmpty } from "react-icons/ci";
-{/* <CiBatteryEmpty /> */}
+{
+	/* <CiBatteryEmpty /> */
+}
 
 interface ActivitiesProps {
 	locale: string;
