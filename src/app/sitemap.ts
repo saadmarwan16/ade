@@ -8,14 +8,14 @@ const sitemap = async (): Promise<MetadataRoute.Sitemap> => {
 		getEntry('/activities'),
 		getEntry('/galleries'),
 		getEntry('/know-me'),
-		getEntry({
-			pathname: '/activities/[slug]',
-			params: { slug: 'slug' },
-		}),
-		getEntry({
-			pathname: '/galleries/[slug]',
-			params: { slug: 'slug' },
-		}),
+		// getEntry({
+		// 	pathname: '/activities/[slug]',
+		// 	params: { slug: 'slug' },
+		// }),
+		// getEntry({
+		// 	pathname: '/galleries/[slug]',
+		// 	params: { slug: 'slug' },
+		// }),
 	];
 };
 

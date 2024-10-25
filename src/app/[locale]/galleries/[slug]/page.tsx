@@ -9,7 +9,7 @@ import { galleryDetailsQuery } from '@/queries/gallery_details';
 import { GalleriesSchema } from '@/types/galleries';
 import { GalleryDetailsSchema } from '@/types/gallery_details';
 import { Metadata } from 'next';
-import { unstable_setRequestLocale } from 'next-intl/server';
+import { setRequestLocale } from 'next-intl/server';
 import { FunctionComponent } from 'react';
 
 interface GalleryDetailsPageProps {
@@ -46,7 +46,7 @@ export const generateStaticParams = async ({
 const GalleryDetailsPage: FunctionComponent<GalleryDetailsPageProps> = async ({
 	params: { locale, slug },
 }) => {
-	unstable_setRequestLocale(locale);
+	setRequestLocale(locale);
 	const { data } = await fetchWithZod(
 		GalleryDetailsSchema,
 		`${env.NEXT_PUBLIC_API_URL}/galleries/${slug}?${galleryDetailsQuery(locale)}`
@@ -61,5 +61,8 @@ const GalleryDetailsPage: FunctionComponent<GalleryDetailsPageProps> = async ({
 		</BackgroundWrapper>
 	);
 };
+
+export const revalidate = 60;
+export const dynamicParams = true;
 
 export default GalleryDetailsPage;

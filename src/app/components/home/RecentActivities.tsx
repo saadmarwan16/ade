@@ -1,20 +1,20 @@
 import { FunctionComponent } from 'react';
 import Image from 'next/image';
 import AceternityButton from '@/components/ui/aceternity-button';
-import { useTranslations } from 'next-intl';
 import { Routes } from '@/lib/routes';
 import { TActivites } from '@/types/home_page';
 import { Link } from '@/i18n/routing';
 import { constructImageLink } from '@/lib/constructLink';
+import { getTranslations } from 'next-intl/server';
 
 interface RecentActivitiesProps {
 	activities: TActivites;
 }
 
-const RecentActivities: FunctionComponent<RecentActivitiesProps> = ({
+const RecentActivities: FunctionComponent<RecentActivitiesProps> = async ({
 	activities,
 }) => {
-	const t = useTranslations('HomePage');
+	const t = await getTranslations('HomePage');
 
 	return (
 		<div className='flex flex-col gap-6'>

@@ -1,17 +1,17 @@
 import React, { FunctionComponent } from 'react';
 import Image from 'next/image';
-import { useTranslations } from 'next-intl';
 import { HomeStickyScroll } from '@/components/ui/home-sticky-scroll-reveal';
 import { TProjects } from '@/types/home_page';
 import { constructImageLink } from '@/lib/constructLink';
 import ExternalAceternityButton from '@/components/ui/external-aceternity-button';
+import { getTranslations } from 'next-intl/server';
 
 interface ProjectsProps {
 	projects: TProjects;
 }
 
-const Projects: FunctionComponent<ProjectsProps> = (props) => {
-	const t = useTranslations('HomePage');
+const Projects: FunctionComponent<ProjectsProps> = async (props) => {
+	const t = await getTranslations('HomePage');
 	const projects = props.projects.map((project) => ({
 		category: project.type,
 		title: project.title,

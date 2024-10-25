@@ -4,11 +4,12 @@ import { ActivitiesSchema } from '@/types/activities';
 import { env } from '@/env';
 import { activitiesQuery } from '@/queries/activities';
 import ActivitiesClient from './ActivitiesClient';
-import { Category } from '@/lib/capitalizeCategory';
+// import { CiBatteryEmpty } from "react-icons/ci";
+{/* <CiBatteryEmpty /> */}
 
 interface ActivitiesProps {
 	locale: string;
-	category: Category;
+	category: string;
 }
 
 const Activities: FunctionComponent<ActivitiesProps> = async ({

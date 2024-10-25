@@ -1,4 +1,4 @@
-import { useTranslations } from 'next-intl';
+import { getTranslations } from 'next-intl/server';
 import { FunctionComponent } from 'react';
 import { RiArrowDownDoubleLine } from 'react-icons/ri';
 
@@ -6,8 +6,8 @@ interface HeroProps {
 	title: string;
 }
 
-const Hero: FunctionComponent<HeroProps> = ({ title }) => {
-	const t = useTranslations('GalleryDetailsPage');
+const Hero: FunctionComponent<HeroProps> = async ({ title }) => {
+	const t = await getTranslations('GalleryDetailsPage');
 
 	return (
 		<div className='flex w-full max-w-[1400px] flex-col gap-4 p-5 sm:px-8 lg:gap-10'>

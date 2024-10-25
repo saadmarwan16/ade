@@ -1,6 +1,6 @@
 import { FunctionComponent } from 'react';
 import { Permanent_Marker } from 'next/font/google';
-import { useTranslations } from 'next-intl';
+import { getTranslations } from 'next-intl/server';
 
 interface HeroProps {}
 
@@ -9,8 +9,8 @@ const permanentMarker = Permanent_Marker({
 	weight: ['400'],
 });
 
-const Hero: FunctionComponent<HeroProps> = () => {
-	const t = useTranslations('KnowMePage');
+const Hero: FunctionComponent<HeroProps> = async () => {
+	const t = await getTranslations('KnowMePage');
 
 	return (
 		<div className='flex flex-col items-center text-center lg:w-full lg:items-start lg:text-left'>

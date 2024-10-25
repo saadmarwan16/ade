@@ -4,7 +4,7 @@ import Hero from '../components/home/Hero';
 import MeAndPartners from '../components/home/MeAndPartners';
 import Projects from '../components/home/Projects';
 import RecentActivities from '../components/home/RecentActivities';
-import { unstable_setRequestLocale } from 'next-intl/server';
+import { setRequestLocale } from 'next-intl/server';
 import { fetchWithZod } from '@/lib/fetchWithZod';
 import { homePageQuery } from '@/queries/home_page';
 import { env } from '@/env';
@@ -32,8 +32,7 @@ export const generateMetadata = async ({
 };
 
 const Home: FunctionComponent<HomeProps> = async ({ params: { locale } }) => {
-	unstable_setRequestLocale(locale);
-	// throw new Error('Not implemented');
+	setRequestLocale(locale);
 	const { data } = await fetchWithZod(
 		HomePageSchema,
 		`${env.NEXT_PUBLIC_API_URL}/home-page?${homePageQuery(locale)}`
@@ -56,5 +55,7 @@ const Home: FunctionComponent<HomeProps> = async ({ params: { locale } }) => {
 		</BackgroundWrapper>
 	);
 };
+
+export const revalidate = 60;
 
 export default Home;

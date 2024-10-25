@@ -41,5 +41,15 @@
 		"subject": "Subject...",
 		"message": "Type your message here...",
 		"send-message-button": "Send message"
+	},
+	"NotFoundPage": {
+		"not-found": "Page not Found",
+		"no-resource": "Could not find requested resource",
+		"home": "Return Home"
+	},
+	"ErrorPage": {
+		"message": "Internal Server Error",
+		"description": "A very unexpected error occurred. Please try again later.",
+		"button": "Try again"
 	}
 }

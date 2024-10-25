@@ -41,5 +41,15 @@
 		"subject": "Konu...",
 		"message": "Mesajınızı buraya yazın...",
 		"send-message-button": "Mesaj gönder"
+	},
+	"NotFoundPage": {
+		"not-found": "Sayfa Bulunamadı",
+		"no-resource": "İstenen kaynak bulunamadı",
+		"home": "Ana Sayfaya Dön"
+	},
+	"ErrorPage": {
+		"message": "İç Sunucu Hatası",
+		"description": "Beklenmedik bir hata oluştu. Lütfen daha sonra tekrar deneyin.",
+		"button": "Tekrar deneyin"
 	}
 }

@@ -1,10 +1,9 @@
-import { Category } from '@/lib/capitalizeCategory';
 import qs from 'qs';
 
 export const activitiesQuery = (
 	locale: string = 'en',
 	page: number = 1,
-	category: Category = 'All'
+	category: string = 'All'
 ) =>
 	qs.stringify(
 		{

@@ -21,7 +21,6 @@ interface SocialsProps {
 
 const Socials: FunctionComponent<SocialsProps> = ({ url }) => {
 	const t = useTranslations('ActivityDetailsPage');
-	console.log('Activity url:', url);
 
 	return (
 		<div className='flex justify-center'>

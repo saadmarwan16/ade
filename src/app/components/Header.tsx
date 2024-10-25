@@ -3,17 +3,17 @@ import HeaderLanguage from './HeaderLanguage';
 import Hamburger from './Hamburger';
 import { Routes } from '@/lib/routes';
 import CustomAvatar from './CustomAvatar';
-import { useTranslations } from 'next-intl';
 import { Link } from '@/i18n/routing';
 import { TAvatar } from '@/types/meta';
+import { getTranslations } from 'next-intl/server';
 
 interface HeaderProps {
 	locale?: 'US' | 'FR' | 'TR';
 	avatar: TAvatar;
 }
 
-const Header: FunctionComponent<HeaderProps> = ({ locale, avatar }) => {
-	const t = useTranslations('Shared');
+const Header: FunctionComponent<HeaderProps> = async ({ locale, avatar }) => {
+	const t = await getTranslations('Shared');
 
 	return (
 		<header className='fixed z-10 flex h-16 w-full items-center bg-white/40 shadow-sm backdrop-blur-md sm:h-20 md:h-24'>

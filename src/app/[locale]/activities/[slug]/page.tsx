@@ -3,7 +3,7 @@ import TitleCategories from '@/app/components/activities/[id]/TitleCategories';
 import CustomCarousel from '@/app/components/activities/[id]/CustomCarousel';
 import Content from '@/app/components/activities/[id]/Content';
 import Socials from '@/app/components/activities/[id]/Socials';
-import { unstable_setRequestLocale } from 'next-intl/server';
+import { setRequestLocale } from 'next-intl/server';
 import { fetchWithZod } from '@/lib/fetchWithZod';
 import { ActivityDetailsSchema } from '@/types/activity_details';
 import { env } from '@/env';
@@ -12,7 +12,6 @@ import { Metadata } from 'next';
 import { constructMetadata } from '@/lib/constructMetadata';
 import { ActivitiesSchema } from '@/types/activities';
 import { activitiesQuery } from '@/queries/activities';
-// import { notFound } from 'next/navigation';
 
 interface ActivityDetailsPageProps {
 	params: {
@@ -48,8 +47,7 @@ export const generateStaticParams = async ({
 const ActivityDetailsPage: FunctionComponent<
 	ActivityDetailsPageProps
 > = async ({ params: { locale, slug } }) => {
-	unstable_setRequestLocale(locale);
-	// notFound();
+	setRequestLocale(locale);
 	const { data } = await fetchWithZod(
 		ActivityDetailsSchema,
 		`${env.NEXT_PUBLIC_API_URL}/activities/${slug}?${activityDetailsQuery(locale)}`
@@ -66,5 +64,8 @@ const ActivityDetailsPage: FunctionComponent<
 		</main>
 	);
 };
+
+export const revalidate = 60;
+export const dynamicParams = true;
 
 export default ActivityDetailsPage;

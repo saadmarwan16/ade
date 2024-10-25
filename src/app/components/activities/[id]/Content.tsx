@@ -11,7 +11,7 @@ interface ContentProps {
 const Content: FunctionComponent<ContentProps> = ({ body }) => {
 	return (
 		<div className='my-6 md:my-8 lg:my-10 lg:flex lg:justify-center'>
-			<div className='max-w-4xl'>
+			<div className='w-full max-w-4xl'>
 				<BlocksRenderer
 					content={body}
 					blocks={{

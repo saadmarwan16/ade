@@ -4,14 +4,14 @@ import Header from '../components/Header';
 import Footer from '../components/Footer';
 import { Inter } from 'next/font/google';
 import { NextIntlClientProvider } from 'next-intl';
-import { getMessages, unstable_setRequestLocale } from 'next-intl/server';
+import { getMessages, setRequestLocale } from 'next-intl/server';
 import { routing } from '@/i18n/routing';
-import '../globals.css';
 import { FunctionComponent, PropsWithChildren } from 'react';
 import { fetchWithZod } from '@/lib/fetchWithZod';
 import { MetaSchema } from '@/types/meta';
 import { env } from '@/env';
 import { metaQuery } from '@/queries/meta';
+import { notFound } from 'next/navigation';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -21,7 +21,7 @@ export const metadata: Metadata = {
 	metadataBase: new URL(env.NEXT_PUBLIC_BASE_URL),
 };
 
-interface RootLayoutProps extends PropsWithChildren {
+interface LocaleLayoutProps extends PropsWithChildren {
 	params: { locale: string };
 }
 
@@ -35,11 +35,15 @@ export function generateStaticParams() {
 	return routing.locales.map((locale) => ({ locale }));
 }
 
-const RootLayout: FunctionComponent<RootLayoutProps> = async ({
+const LocaleLayout: FunctionComponent<LocaleLayoutProps> = async ({
 	children,
 	params: { locale },
 }) => {
-	unstable_setRequestLocale(locale);
+	if (!routing.locales.includes(locale as any)) {
+		notFound();
+	}
+
+	setRequestLocale(locale);
 	const messages = await getMessages();
 	const { data } = await fetchWithZod(
 		MetaSchema,
@@ -74,4 +78,4 @@ const RootLayout: FunctionComponent<RootLayoutProps> = async ({
 	);
 };
 
-export default RootLayout;
+export default LocaleLayout;

@@ -3,13 +3,12 @@ import Content from '@/app/components/know-me/Content';
 import Hero from '@/app/components/know-me/Hero';
 import ReachOut from '@/app/components/know-me/ReachOut';
 import { env } from '@/env';
-import { getPathname } from '@/i18n/routing';
 import { constructMetadata } from '@/lib/constructMetadata';
 import { fetchWithZod } from '@/lib/fetchWithZod';
 import { knowMePageQuery } from '@/queries/know_me_page';
 import { KnowMeSchema } from '@/types/know_me_page';
 import { Metadata } from 'next';
-import { unstable_setRequestLocale } from 'next-intl/server';
+import { setRequestLocale } from 'next-intl/server';
 import { FunctionComponent } from 'react';
 
 interface KnowMePageProps {
@@ -34,7 +33,7 @@ export const generateMetadata = async ({
 const KnowMePage: FunctionComponent<KnowMePageProps> = async ({
 	params: { locale },
 }) => {
-	unstable_setRequestLocale(locale);
+	setRequestLocale(locale);
 	const { data } = await fetchWithZod(
 		KnowMeSchema,
 		`${env.NEXT_PUBLIC_API_URL}/know-me?${knowMePageQuery(locale)}`
@@ -50,5 +49,7 @@ const KnowMePage: FunctionComponent<KnowMePageProps> = async ({
 		</BackgroundWrapper>
 	);
 };
+
+export const revalidate = 60;
 
 export default KnowMePage;

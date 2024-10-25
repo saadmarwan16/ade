@@ -3,9 +3,9 @@ import { IoLogoInstagram } from 'react-icons/io5';
 import { IoLogoLinkedin } from 'react-icons/io5';
 import { Routes } from '@/lib/routes';
 import { FunctionComponent } from 'react';
-import { useTranslations } from 'next-intl';
 import { Link } from '@/i18n/routing';
 import { TAvatar, TEmail, TSocial } from '@/types/meta';
+import { getTranslations } from 'next-intl/server';
 
 interface FooterProps {
 	linkedin: TSocial;
@@ -14,13 +14,13 @@ interface FooterProps {
 	avatar: TAvatar;
 }
 
-const Footer: FunctionComponent<FooterProps> = ({
+const Footer: FunctionComponent<FooterProps> = async ({
 	avatar,
 	email,
 	instagram,
 	linkedin,
 }) => {
-	const t = useTranslations('Shared');
+	const t = await getTranslations('Shared');
 
 	return (
 		<footer className='mt-6 flex justify-center bg-gray-100 px-5 py-3 sm:px-8'>

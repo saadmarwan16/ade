@@ -1,21 +1,21 @@
 import { FunctionComponent } from 'react';
 import Image from 'next/image';
-import { useTranslations } from 'next-intl';
 import { Routes } from '@/lib/routes';
 import AceternityButton from '@/components/ui/aceternity-button';
 import { TLogos } from '@/types/home_page';
 import { constructImageLink } from '@/lib/constructLink';
+import { getTranslations } from 'next-intl/server';
 
 interface MeAndPartnersProps {
 	description: string;
 	logos: TLogos;
 }
 
-const MeAndPartners: FunctionComponent<MeAndPartnersProps> = ({
+const MeAndPartners: FunctionComponent<MeAndPartnersProps> = async ({
 	description,
 	logos,
 }) => {
-	const t = useTranslations('HomePage');
+	const t = await getTranslations('HomePage');
 
 	return (
 		<div className='flex w-full flex-col gap-8 sm:gap-10 md:gap-12 lg:flex-row lg:gap-16'>

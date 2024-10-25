@@ -15,7 +15,7 @@
 	"ActivitiesPage": {
 		"all-tab": "Tout",
 		"personal-tab": "Personnel",
-		"social-tab": "Social",
+		"social-tab": "Sociale",
 		"political-tab": "Politique",
 		"professional-tab": "Professionnel",
 		"see-more-button": "Voir plus"
@@ -41,5 +41,15 @@
 		"subject": "Objet...",
 		"message": "Tapez votre message ici...",
 		"send-message-button": "Envoyer le message"
+	},
+	"NotFoundPage": {
+		"not-found": "Page non trouvée",
+		"no-resource": "Impossible de trouver la ressource demandée",
+		"home": "Retour à l'accueil"
+	},
+	"ErrorPage": {
+		"message": "Erreur interne du serveur",
+		"description": "Une erreur inattendue s'est produite. Veuillez réessayer ultérieurement.",
+		"button": "Essayer à nouveau"
 	}
 }

@@ -3,13 +3,13 @@ import Galleries from '@/app/components/galleries/Galleries';
 import Hero from '@/app/components/galleries/Hero';
 import GalleriesSkeleton from '@/app/components/GalleriesSkeleton';
 import { env } from '@/env';
-import { getPathname } from '@/i18n/routing';
+import { routing } from '@/i18n/routing';
 import { constructMetadata } from '@/lib/constructMetadata';
 import { fetchWithZod } from '@/lib/fetchWithZod';
 import { galleriesPageQuery } from '@/queries/galleries_page';
 import { GalleriesPageSchema } from '@/types/galleries_page';
 import { Metadata } from 'next';
-import { unstable_setRequestLocale } from 'next-intl/server';
+import { setRequestLocale } from 'next-intl/server';
 import { FunctionComponent, Suspense } from 'react';
 
 interface GalleriesPageProps {
@@ -34,8 +34,7 @@ export const generateMetadata = async ({
 const GalleriesPage: FunctionComponent<GalleriesPageProps> = async ({
 	params: { locale },
 }) => {
-	unstable_setRequestLocale(locale);
-	// throw new Error('404 Not Found'); // This is from the strapi api error object
+	setRequestLocale(locale);
 	const { data } = await fetchWithZod(
 		GalleriesPageSchema,
 		`${env.NEXT_PUBLIC_API_URL}/galleries-page?${galleriesPageQuery(locale)}`
@@ -53,5 +52,7 @@ const GalleriesPage: FunctionComponent<GalleriesPageProps> = async ({
 		</BackgroundWrapper>
 	);
 };
+
+export const revalidate = 60;
 
 export default GalleriesPage;

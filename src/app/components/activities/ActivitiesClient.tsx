@@ -12,12 +12,11 @@ import { env } from '@/env';
 import { activitiesQuery } from '@/queries/activities';
 import { fetchWithZod } from '@/lib/fetchWithZod';
 import { Skeleton } from '@/components/ui/skeleton';
-import { Category } from '@/lib/capitalizeCategory';
 
 interface ActivitiesClientProps {
 	activities: TActivities;
 	locale: string;
-	category: Category;
+	category: string;
 }
 
 const ActivitiesClient: FunctionComponent<ActivitiesClientProps> = ({

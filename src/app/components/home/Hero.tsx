@@ -1,19 +1,19 @@
 import { FunctionComponent } from 'react';
 import Image from 'next/image';
-import { useTranslations } from 'next-intl';
 import { TAvatar } from '@/types/home_page';
 import { constructImageLink } from '@/lib/constructLink';
+import { getTranslations } from 'next-intl/server';
 
 interface HeroProps {
 	first_avatar: TAvatar;
 	second_avatar: TAvatar;
 }
 
-const Hero: FunctionComponent<HeroProps> = ({
+const Hero: FunctionComponent<HeroProps> = async ({
 	first_avatar,
 	second_avatar,
 }) => {
-	const t = useTranslations('HomePage');
+	const t = await getTranslations('HomePage');
 
 	return (
 		<div className='flex w-full flex-col overflow-hidden text-6xl font-medium sm:text-7xl md:text-8xl lg:text-[14vw] xl:text-[13vw] 2xl:text-[11vw]'>

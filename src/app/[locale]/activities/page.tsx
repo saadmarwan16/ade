@@ -5,7 +5,7 @@ import HeroTitle from '@/app/components/activities/HeroTitle';
 import Featured from '@/app/components/activities/Featured';
 import Tabs from '@/app/components/activities/Tabs';
 import Activities from '@/app/components/activities/Activities';
-import { getTranslations, unstable_setRequestLocale } from 'next-intl/server';
+import { setRequestLocale } from 'next-intl/server';
 import { fetchWithZod } from '@/lib/fetchWithZod';
 import { ActivitiesPageSchema } from '@/types/activities_page';
 import { env } from '@/env';
@@ -15,13 +15,11 @@ import { capitalizeCategory } from '@/lib/capitalizeCategory';
 import { Metadata } from 'next';
 import { constructMetadata } from '@/lib/constructMetadata';
 
-type Category = 'all' | 'personal' | 'professional' | 'social' | 'political';
-
 interface ActivitiesPageProps {
 	params: {
 		locale: string;
 	};
-	searchParams: { category: Category };
+	searchParams: { category: string };
 }
 
 export const generateMetadata = async ({
@@ -41,8 +39,7 @@ const ActivitiesPage: FunctionComponent<ActivitiesPageProps> = async ({
 	params: { locale },
 	searchParams,
 }) => {
-	unstable_setRequestLocale(locale);
-	const t = await getTranslations('ActivitiesPage');
+	setRequestLocale(locale);
 	const category = capitalizeCategory(searchParams.category);
 	const { data } = await fetchWithZod(
 		ActivitiesPageSchema,
@@ -63,5 +60,7 @@ const ActivitiesPage: FunctionComponent<ActivitiesPageProps> = async ({
 		</BackgroundWrapper>
 	);
 };
+
+export const revalidate = 60;
 
 export default ActivitiesPage;
