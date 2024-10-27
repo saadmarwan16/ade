@@ -35,10 +35,7 @@ const Hamburger: FunctionComponent<HamburgerProps> = () => {
 
 								<div className='my-16 flex w-fit flex-col gap-2 text-3xl'>
 									<Drawer.Trigger asChild>
-										<Link
-											className='duration-500 hover:scale-105'
-											href='/'
-										>
+										<Link className='duration-500 hover:scale-105' href='/'>
 											{t('home')}
 										</Link>
 									</Drawer.Trigger>
