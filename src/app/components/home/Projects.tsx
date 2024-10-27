@@ -33,39 +33,43 @@ const Projects: FunctionComponent<ProjectsProps> = async (props) => {
 
 	return (
 		<>
-			<div className='hidden w-full lg:block'>
-				<HomeStickyScroll content={projects} />
-			</div>
-			<div className='-mx-5 flex flex-col gap-12 bg-gray-200/40 px-5 py-12 backdrop-blur-sm sm:-mx-8 sm:px-8 lg:hidden'>
-				{projects.map((project, idx) => (
-					<div key={idx} className='flex w-full flex-col items-start gap-2'>
-						<span className='font-medium text-blue-600 sm:text-lg md:text-xl'>
-							{project.category}
-						</span>
-						<h3 className='text-2xl font-semibold sm:text-3xl'>
-							{project.title}
-						</h3>
-						<p className='text-base sm:text-lg md:text-xl'>
-							{project.description}
-						</p>
-						{project.link && (
-							<ExternalAceternityButton
-								text={t('learn-more-button')}
-								link={project.link}
-							/>
-						)}
-
-						<div className='relative mt-6 aspect-square max-h-[400px] w-full rounded-md'>
-							<Image
-								src={project.image}
-								alt={project.title}
-								className='rounded-md'
-								fill
-							/>
-						</div>
+			{projects.length > 0 ? (
+				<>
+					<div className='hidden w-full lg:block'>
+						<HomeStickyScroll content={projects} />
 					</div>
-				))}
-			</div>
+					<div className='-mx-5 flex flex-col gap-12 bg-gray-200/40 px-5 py-12 backdrop-blur-sm sm:-mx-8 sm:px-8 lg:hidden'>
+						{projects.map((project, idx) => (
+							<div key={idx} className='flex w-full flex-col items-start gap-2'>
+								<span className='font-medium text-blue-600 sm:text-lg md:text-xl'>
+									{project.category}
+								</span>
+								<h3 className='text-2xl font-semibold sm:text-3xl'>
+									{project.title}
+								</h3>
+								<p className='text-base sm:text-lg md:text-xl'>
+									{project.description}
+								</p>
+								{project.link && (
+									<ExternalAceternityButton
+										text={t('learn-more-button')}
+										link={project.link}
+									/>
+								)}
+
+								<div className='relative mt-6 aspect-square max-h-[400px] w-full rounded-md'>
+									<Image
+										src={project.image}
+										alt={project.title}
+										className='rounded-md'
+										fill
+									/>
+								</div>
+							</div>
+						))}
+					</div>
+				</>
+			) : null}
 		</>
 	);
 };

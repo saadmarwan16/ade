@@ -12,6 +12,7 @@ import { galleriesQuery } from '@/queries/galleries';
 import { env } from '@/env';
 import { fetchWithZod } from '@/lib/fetchWithZod';
 import { Skeleton } from '@/components/ui/skeleton';
+import EmptyList from '../EmptyList';
 
 interface GalleriesClientProps {
 	galleries: TGalleries;
@@ -23,6 +24,7 @@ const GalleriesClient: FunctionComponent<GalleriesClientProps> = ({
 	locale,
 }) => {
 	const t = useTranslations('GalleriesPage');
+	const t2 = useTranslations('EmptyList');
 	const {
 		data: galleries,
 		size,
@@ -46,57 +48,63 @@ const GalleriesClient: FunctionComponent<GalleriesClientProps> = ({
 	);
 
 	return (
-		<div className='mx-auto grid grid-cols-1 gap-4 sm:grid-cols-2 md:gap-6 lg:grid-cols-3 xl:max-w-[1336px] xl:gap-8'>
-			{galleries?.map((page) => (
-				<>
-					{page.map((gallery) => (
-						<Link
-							key={gallery.documentId}
-							href={{
-								pathname: '/galleries/[slug]',
-								params: { slug: gallery.slug },
-							}}
-							className='flex flex-col gap-2 duration-500 hover:scale-105 hover:text-blue-700'
-						>
-							<div className='relative aspect-video rounded-md'>
-								<Image
-									alt={gallery.title}
-									src={constructImageLink(gallery.thumbnail.url)}
-									fill
-									className='rounded-md'
-								/>
-								<div className='absolute bottom-0 left-0 right-0 top-0 rounded-md bg-black/30 p-2'>
-									<div className='w-fit rounded-sm border-[0.5px] border-gray-300 px-2'>
-										<small className='text-base font-extralight text-white'>
-											{gallery.images.length} {t('photos')}
-										</small>
+		<>
+			{size === 1 && galleries?.[0]?.length === 0 ? (
+				<EmptyList message={t2('galleries')} />
+			) : (
+				<div className='mx-auto grid grid-cols-1 gap-4 sm:grid-cols-2 md:gap-6 lg:grid-cols-3 xl:max-w-[1336px] xl:gap-8'>
+					{galleries?.map((page) => (
+						<>
+							{page.map((gallery) => (
+								<Link
+									key={gallery.documentId}
+									href={{
+										pathname: '/galleries/[slug]',
+										params: { slug: gallery.slug },
+									}}
+									className='flex flex-col gap-2 duration-500 hover:scale-105 hover:text-blue-700'
+								>
+									<div className='relative aspect-video rounded-md'>
+										<Image
+											alt={gallery.title}
+											src={constructImageLink(gallery.thumbnail.url)}
+											fill
+											className='rounded-md'
+										/>
+										<div className='absolute bottom-0 left-0 right-0 top-0 rounded-md bg-black/30 p-2'>
+											<div className='w-fit rounded-sm border-[0.5px] border-gray-300 px-2'>
+												<small className='text-base font-extralight text-white'>
+													{gallery.images.length} {t('photos')}
+												</small>
+											</div>
+										</div>
 									</div>
-								</div>
-							</div>
 
-							<h4 className='line-clamp-2 text-xl font-medium xl:text-2xl'>
-								{gallery.title}
-							</h4>
-						</Link>
+									<h4 className='line-clamp-2 text-xl font-medium xl:text-2xl'>
+										{gallery.title}
+									</h4>
+								</Link>
+							))}
+						</>
 					))}
-				</>
-			))}
-			{isValidating && (
-				<>
-					{[...Array(12)].map((_, idx) => (
-						<Skeleton key={idx} className='aspect-video' />
-					))}
-				</>
+					{isValidating && (
+						<>
+							{[...Array(12)].map((_, idx) => (
+								<Skeleton key={idx} className='aspect-video' />
+							))}
+						</>
+					)}
+					<AceternityButton
+						text={t('see-more-button')}
+						className='sm:col-span-2 sm:place-self-end lg:col-span-3'
+						disabled={
+							isLoading || isValidating || galleries?.[size - 1]?.length === 0
+						}
+						onClick={() => setSize(size + 1)}
+					/>
+				</div>
 			)}
-			<AceternityButton
-				text={t('see-more-button')}
-				className='sm:col-span-2 sm:place-self-end lg:col-span-3'
-				disabled={
-					isLoading || isValidating || galleries?.[size - 1]?.length === 0
-				}
-				onClick={() => setSize(size + 1)}
-			/>
-		</div>
+		</>
 	);
 };
 

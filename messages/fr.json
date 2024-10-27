@@ -51,5 +51,9 @@
 		"message": "Erreur interne du serveur",
 		"description": "Une erreur inattendue s'est produite. Veuillez réessayer ultérieurement.",
 		"button": "Essayer à nouveau"
+	},
+	"EmptyList": {
+		"activities": "Les activités disponibles apparaîtront ici",
+		"galleries": "Les galeries disponibles apparaîtront ici"
 	}
 }

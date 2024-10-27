@@ -49,7 +49,7 @@ const Footer: FunctionComponent<FooterProps> = async ({
 				</span>
 				<span className='text-sm sm:order-3 md:text-base'>
 					© 2024{' '}
-					<Link href={Routes.HOME} className='text-blue-700'>
+					<Link href='/' className='text-blue-700'>
 						ADE
 					</Link>{' '}
 					| {t('rights')}

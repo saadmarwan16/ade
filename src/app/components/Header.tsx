@@ -1,7 +1,6 @@
 import React, { FunctionComponent } from 'react';
 import HeaderLanguage from './HeaderLanguage';
 import Hamburger from './Hamburger';
-import { Routes } from '@/lib/routes';
 import CustomAvatar from './CustomAvatar';
 import { Link } from '@/i18n/routing';
 import { TAvatar } from '@/types/meta';
@@ -21,9 +20,9 @@ const Header: FunctionComponent<HeaderProps> = async ({ locale, avatar }) => {
 				<CustomAvatar avatar={avatar} />
 
 				<div className='hidden gap-6 text-xl text-gray-600 md:flex'>
-					<Link href={Routes.ACTIVITIES}>{t('activities')}</Link>
-					<Link href={Routes.GALLERY}>{t('galleries')}</Link>
-					<Link href={Routes.KNOW_ME}>{t('know-me')}</Link>
+					<Link href='/activities'>{t('activities')}</Link>
+					<Link href='/galleries'>{t('galleries')}</Link>
+					<Link href='/know-me'>{t('know-me')}</Link>
 				</div>
 
 				<>

@@ -26,7 +26,7 @@ const Tabs: FunctionComponent<TabsProps> = ({ category }) => {
 					router.push(
 						{
 							pathname: '/activities',
-							query: { category: t('personal-tab') },
+							query: { category: t('personal-tab').toLowerCase() },
 						},
 						{
 							scroll: false,
@@ -42,7 +42,7 @@ const Tabs: FunctionComponent<TabsProps> = ({ category }) => {
 					router.push(
 						{
 							pathname: '/activities',
-							query: { category: t('social-tab') },
+							query: { category: t('social-tab').toLowerCase() },
 						},
 						{
 							scroll: false,
@@ -58,7 +58,7 @@ const Tabs: FunctionComponent<TabsProps> = ({ category }) => {
 					router.push(
 						{
 							pathname: '/activities',
-							query: { category: t('political-tab') },
+							query: { category: t('political-tab').toLowerCase() },
 						},
 						{
 							scroll: false,
@@ -74,7 +74,7 @@ const Tabs: FunctionComponent<TabsProps> = ({ category }) => {
 					router.push(
 						{
 							pathname: '/activities',
-							query: { category: t('professional-tab') },
+							query: { category: t('professional-tab').toLowerCase() },
 						},
 						{
 							scroll: false,

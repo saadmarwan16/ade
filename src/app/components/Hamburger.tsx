@@ -37,7 +37,7 @@ const Hamburger: FunctionComponent<HamburgerProps> = () => {
 									<Drawer.Trigger asChild>
 										<Link
 											className='duration-500 hover:scale-105'
-											href={Routes.HOME}
+											href='/'
 										>
 											{t('home')}
 										</Link>
@@ -45,7 +45,7 @@ const Hamburger: FunctionComponent<HamburgerProps> = () => {
 									<Drawer.Trigger asChild>
 										<Link
 											className='duration-500 hover:scale-105'
-											href={Routes.ACTIVITIES}
+											href='/activities'
 										>
 											{t('activities')}
 										</Link>
@@ -53,7 +53,7 @@ const Hamburger: FunctionComponent<HamburgerProps> = () => {
 									<Drawer.Trigger asChild>
 										<Link
 											className='duration-500 hover:scale-105'
-											href={Routes.GALLERY}
+											href='/galleries'
 										>
 											{t('galleries')}
 										</Link>
@@ -61,7 +61,7 @@ const Hamburger: FunctionComponent<HamburgerProps> = () => {
 									<Drawer.Trigger asChild>
 										<Link
 											className='duration-500 hover:scale-105'
-											href={Routes.KNOW_ME}
+											href='/know-me'
 										>
 											{t('know-me')}
 										</Link>

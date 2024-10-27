@@ -1,57 +1,55 @@
 import { MetadataRoute } from 'next';
 import { Locale, getPathname, routing } from '@/i18n/routing';
 import { env } from '@/env';
+import { fetchAllSitemapData } from '@/lib/fetchAllSitemapData';
+
+const urls = {
+	'activities': {
+		en: 'activities',
+		fr: 'activites',
+		tr: 'etkinlikler',
+	},
+	'galleries': {
+		en: 'galleries',
+		fr: 'galeries',
+		tr: 'galeriler',
+	}
+}
 
 const sitemap = async (): Promise<MetadataRoute.Sitemap> => {
+	const activities = routing.locales.map(async (locale) => {
+		const activities = await fetchAllSitemapData(`${env.NEXT_PUBLIC_API_URL}/activities`, locale)
+		return activities.map((activity) => getLocalizedEntry(urls['activities'][locale], locale, activity.slug));
+	});
+	const galleries = routing.locales.map(async (locale) => {
+		const galleries = await fetchAllSitemapData(`${env.NEXT_PUBLIC_API_URL}/galleries`, locale)
+		return galleries.map((gallery) => getLocalizedEntry(urls['galleries'][locale], locale, gallery.slug));
+	});
+	const entries = await Promise.all([...activities, ...galleries]);
 	return [
 		getEntry('/'),
 		getEntry('/activities'),
 		getEntry('/galleries'),
 		getEntry('/know-me'),
-		// getEntry({
-		// 	pathname: '/activities/[slug]',
-		// 	params: { slug: 'slug' },
-		// }),
-		// getEntry({
-		// 	pathname: '/galleries/[slug]',
-		// 	params: { slug: 'slug' },
-		// }),
+		...entries.flat(),
 	];
 };
 
 type Href = Parameters<typeof getPathname>[0]['href'];
 
-function getEntry(href: Href): {
-	url: string;
-	lastModified: Date;
-	changeFrequency:
-		| 'always'
-		| 'never'
-		| 'hourly'
-		| 'daily'
-		| 'weekly'
-		| 'monthly'
-		| 'yearly'
-		| undefined;
-	alternates: {
-		languages: {
-			[k: string]: string;
-		};
-	};
-} {
-	const val = Object.fromEntries(
-		routing.locales.map((locale) => [locale, getUrl(href, locale)])
-	);
+function getLocalizedEntry(href: string, locale: string, slug: string) {
+	const pathname = `${env.NEXT_PUBLIC_BASE_URL}/${locale}/${href}/${slug}`;
 
+	return {
+		url: pathname,
+		lastModified: new Date(),
+	};
+}
+
+function getEntry(href: Href) {
 	return {
 		url: getUrl(href, routing.defaultLocale),
 		lastModified: new Date(),
-		changeFrequency: 'hourly',
-		alternates: {
-			languages: Object.fromEntries(
-				routing.locales.map((locale) => [locale, getUrl(href, locale)])
-			),
-		},
 	};
 }
 

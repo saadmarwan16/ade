@@ -15,7 +15,7 @@ export const NotFound: FunctionComponent = async () => {
 			<p className='text-xl font-medium text-gray-500 sm:text-2xl md:text-3xl'>
 				{t('no-resource')}
 			</p>
-			<Link href={Routes.HOME} className={`${buttonVariants()} mt-10`}>
+			<Link href='/' className={`${buttonVariants()} mt-10`}>
 				{t('home')}
 			</Link>
 		</div>

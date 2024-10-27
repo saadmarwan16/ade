@@ -39,7 +39,7 @@ const Photos: FunctionComponent<PhotosProps> = ({ title, images }) => {
 						<BreadcrumbItem>
 							<BreadcrumbLink asChild>
 								<Link
-									href={Routes.GALLERY}
+									href='/galleries'
 									className='text-base sm:text-xl lg:text-2xl'
 								>
 									{t('galleries-link')}

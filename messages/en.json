@@ -51,5 +51,9 @@
 		"message": "Internal Server Error",
 		"description": "A very unexpected error occurred. Please try again later.",
 		"button": "Try again"
+	},
+	"EmptyList": {
+		"activities": "Available activities will appear here",
+		"galleries": "Available galleries will appear here"
 	}
 }

@@ -18,8 +18,8 @@ const ReachOut: FunctionComponent<ReachOutProps> = () => {
 	const t = useTranslations('KnowMePage');
 
 	useEffect(() => {
-		const { data, fetchError, serverError } = result;
-		if (fetchError || serverError) toast.error(fetchError || serverError);
+		const { data, serverError } = result;
+		if (serverError) toast.error(serverError);
 		else if (data === 'Message sent successfully') {
 			ref.current?.reset();
 			toast.success(data);

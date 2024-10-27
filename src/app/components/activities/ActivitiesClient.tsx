@@ -12,6 +12,7 @@ import { env } from '@/env';
 import { activitiesQuery } from '@/queries/activities';
 import { fetchWithZod } from '@/lib/fetchWithZod';
 import { Skeleton } from '@/components/ui/skeleton';
+import EmptyList from '../EmptyList';
 
 interface ActivitiesClientProps {
 	activities: TActivities;
@@ -25,6 +26,7 @@ const ActivitiesClient: FunctionComponent<ActivitiesClientProps> = ({
 	category,
 }) => {
 	const t = useTranslations('ActivitiesPage');
+	const t2 = useTranslations('EmptyList');
 	const {
 		data: activities,
 		size,
@@ -49,49 +51,55 @@ const ActivitiesClient: FunctionComponent<ActivitiesClientProps> = ({
 
 	return (
 		<>
-			<div className='grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4'>
-				{activities?.map((page) => (
-					<>
-						{page.map((activity) => (
-							<Link
-								href={{
-									pathname: '/activities/[slug]',
-									params: { slug: activity.slug },
-								}}
-								key={activity.documentId}
-								className='flex flex-col gap-2 duration-500 hover:scale-[1.03] hover:text-blue-900'
-							>
-								<div className='relative aspect-video rounded-lg'>
-									<Image
-										src={constructImageLink(activity.thumbnail.url)}
-										alt={`Image of ${activity.title}`}
-										fill
-										className='rounded-lg'
-									/>
-								</div>
-								<h4 className='line-clamp-2 text-base sm:text-lg'>
-									{activity.title}
-								</h4>
-							</Link>
+			{size === 1 && activities?.[0]?.length === 0 ? (
+				<EmptyList message={t2('activities')} />
+			) : (
+				<>
+					<div className='grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4'>
+						{activities?.map((page) => (
+							<>
+								{page.map((activity) => (
+									<Link
+										href={{
+											pathname: '/activities/[slug]',
+											params: { slug: activity.slug },
+										}}
+										key={activity.documentId}
+										className='flex flex-col gap-2 duration-500 hover:scale-[1.03] hover:text-blue-900'
+									>
+										<div className='relative aspect-video rounded-lg'>
+											<Image
+												src={constructImageLink(activity.thumbnail.url)}
+												alt={`Image of ${activity.title}`}
+												fill
+												className='rounded-lg'
+											/>
+										</div>
+										<h4 className='line-clamp-2 text-base sm:text-lg'>
+											{activity.title}
+										</h4>
+									</Link>
+								))}
+							</>
 						))}
-					</>
-				))}
-				{isValidating && (
-					<>
-						{[...Array(12)].map((_, idx) => (
-							<Skeleton key={idx} className='aspect-video' />
-						))}
-					</>
-				)}
-			</div>
-			<AceternityButton
-				text={t('see-more-button')}
-				className='sm:place-self-end'
-				disabled={
-					isLoading || isValidating || activities?.[size - 1]?.length === 0
-				}
-				onClick={() => setSize(size + 1)}
-			/>
+						{isValidating && (
+							<>
+								{[...Array(12)].map((_, idx) => (
+									<Skeleton key={idx} className='aspect-video' />
+								))}
+							</>
+						)}
+					</div>
+					<AceternityButton
+						text={t('see-more-button')}
+						className='sm:place-self-end'
+						disabled={
+							isLoading || isValidating || activities?.[size - 1]?.length === 0
+						}
+						onClick={() => setSize(size + 1)}
+					/>
+				</>
+			)}
 		</>
 	);
 };

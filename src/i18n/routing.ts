@@ -8,12 +8,12 @@ export const routing = defineRouting({
 		'/': '/',
 		'/activities': {
 			en: '/activities',
-			fr: '/activités',
+			fr: '/activites',
 			tr: '/etkinlikler',
 		},
 		'/activities/[slug]': {
 			en: '/activities/[slug]',
-			fr: '/activités/[slug]',
+			fr: '/activites/[slug]',
 			tr: '/etkinlikler/[slug]',
 		},
 		'/galleries': {
@@ -28,18 +28,18 @@ export const routing = defineRouting({
 		},
 		'/know-me': {
 			en: '/know-me',
-			fr: '/me-connaître',
+			fr: '/me-connaitre',
 			tr: '/beni-tani',
 		},
 	},
 });
 
-export {};
 const {
 	'/activities/[slug]': _,
 	'/galleries/[slug]': __,
 	...pathnames
 } = routing.pathnames;
+
 export type Pathnames = keyof typeof pathnames;
 
 export type Locale = (typeof routing.locales)[number];

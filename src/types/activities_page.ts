@@ -1,13 +1,15 @@
 import { z } from 'zod';
 import { ImageSchema, SeoSchema } from './shared';
 
-export const FeaturedActivitySchema = z.object({
-	id: z.number(),
-	documentId: z.string(),
-	title: z.string(),
-	slug: z.string(),
-	thumbnail: ImageSchema,
-});
+export const FeaturedActivitySchema = z
+	.object({
+		id: z.number(),
+		documentId: z.string(),
+		title: z.string(),
+		slug: z.string(),
+		thumbnail: ImageSchema,
+	})
+	.nullable();
 
 export const ActivitiesPageSchema = z.object({
 	data: z.object({
