@@ -10,24 +10,13 @@ const nextConfig = {
 		remotePatterns: [
 			{
 				protocol: 'http',
-				hostname: '127.0.0.1',
-				port: '1337',
-				pathname: '**',
-			},
-			{
-				protocol: 'http',
 				hostname: 'localhost',
 				port: '1337',
 				pathname: '**',
 			},
 			{
 				protocol: 'https',
-				hostname: 'github.com',
-				pathname: '**',
-			},
-			{
-				protocol: 'https',
-				hostname: 'assets.react-photo-album.com',
+				hostname: 'res.cloudinary.com',
 				pathname: '**',
 			},
 		],

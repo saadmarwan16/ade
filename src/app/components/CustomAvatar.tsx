@@ -1,4 +1,3 @@
-import { Routes } from '@/lib/routes';
 import { FunctionComponent } from 'react';
 import HeaderName from './HeaderName';
 import Image from 'next/image';
