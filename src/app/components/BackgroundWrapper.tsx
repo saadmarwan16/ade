@@ -23,7 +23,7 @@ const BackgroundWrapper: FunctionComponent<PropsWithChildren> = ({
 					{children}
 				</motion.div>
 			</AuroraBackground>
-			<div className='block lg:hidden min-h-full'>{children}</div>
+			<div className='block min-h-full lg:hidden'>{children}</div>
 		</>
 	);
 };
