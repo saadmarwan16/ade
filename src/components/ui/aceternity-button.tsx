@@ -34,6 +34,7 @@ const AceternityButton: FunctionComponent<AceternityButtonProps> = ({
 				<button
 					className={`relative p-[3px] ${className}`}
 					onClick={onClick}
+					disabled={disabled}
 					type={type}
 				>
 					<div className='absolute inset-0 rounded-lg bg-gradient-to-r from-[#B18733] via-[#9B6D22] to-[#6F3800]' />
