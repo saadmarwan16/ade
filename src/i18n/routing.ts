@@ -29,7 +29,7 @@ export const routing = defineRouting({
 		'/know-me': {
 			en: '/know-me',
 			fr: '/me-connaitre',
-			tr: '/beni-tani',
+			tr: '/beni-tanit',
 		},
 	},
 });

@@ -16,7 +16,7 @@ const Content: FunctionComponent<ContentProps> = ({ body }) => {
 					content={body}
 					blocks={{
 						paragraph: ({ children }) => (
-							<p className='text-base md:text-lg lg:text-xl xl:text-2xl'>
+							<p className='text-base md:text-lg lg:text-xl xl:text-2xl text-justify'>
 								{children}
 							</p>
 						),
