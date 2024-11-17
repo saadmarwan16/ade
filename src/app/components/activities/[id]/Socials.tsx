@@ -1,7 +1,7 @@
 'use client';
 
 import { FunctionComponent } from 'react';
-import { useTranslations } from 'next-intl';
+import { useLocale, useTranslations } from 'next-intl';
 import {
 	EmailShareButton,
 	EmailIcon,
@@ -14,13 +14,24 @@ import {
 	WhatsappShareButton,
 	WhatsappIcon,
 } from 'react-share';
+import { getPathname } from '@/i18n/routing';
+import { env } from '@/env';
 
 interface SocialsProps {
-	url: string;
+	slug: string;
 }
 
-const Socials: FunctionComponent<SocialsProps> = ({ url }) => {
+const Socials: FunctionComponent<SocialsProps> = ({ slug }) => {
 	const t = useTranslations('ActivityDetailsPage');
+	const locale = useLocale();
+	const pathname = getPathname({
+		locale: locale as 'en' | 'fr' | 'tr',
+		href: {
+			pathname: '/activities/[slug]',
+			params: { slug: slug },
+		},
+	});
+	const url = `${env.NEXT_PUBLIC_BASE_URL}/${locale}${pathname}`;
 
 	return (
 		<div className='flex justify-center'>

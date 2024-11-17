@@ -59,7 +59,7 @@ const ActivityDetailsPage: FunctionComponent<
 				<TitleCategories title={data.title} categories={data.categories} />
 				<CustomCarousel title={data.title} images={data.images} />
 				<Content body={data.body} />
-				<Socials url={`${env.NEXT_PUBLIC_BASE_URL}/activities/${slug}`} />
+				<Socials slug={slug} />
 			</div>
 		</main>
 	);
