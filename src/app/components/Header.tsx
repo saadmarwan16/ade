@@ -26,7 +26,7 @@ const Header: FunctionComponent<HeaderProps> = async ({ locale, avatar }) => {
 				</div>
 
 				<>
-					<Hamburger />
+					<Hamburger locale={locale} />
 					<div className='hidden md:block'>
 						<HeaderLanguage locale={locale} />
 					</div>

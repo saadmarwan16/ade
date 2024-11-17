@@ -4,14 +4,15 @@ import { FunctionComponent } from 'react';
 import { RxHamburgerMenu } from 'react-icons/rx';
 import { Drawer } from 'vaul';
 import { IoMdClose } from 'react-icons/io';
-import { Routes } from '@/lib/routes';
 import HeaderLanguage from './HeaderLanguage';
 import { useTranslations } from 'next-intl';
 import { Link } from '@/i18n/routing';
 
-interface HamburgerProps {}
+interface HamburgerProps {
+	locale?: 'US' | 'FR' | 'TR';
+}
 
-const Hamburger: FunctionComponent<HamburgerProps> = () => {
+const Hamburger: FunctionComponent<HamburgerProps> = ({ locale }) => {
 	const t = useTranslations('Shared');
 
 	return (
@@ -66,7 +67,7 @@ const Hamburger: FunctionComponent<HamburgerProps> = () => {
 								</div>
 							</div>
 
-							<HeaderLanguage />
+							<HeaderLanguage locale={locale} />
 						</div>
 					</div>
 				</Drawer.Content>
