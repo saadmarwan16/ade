@@ -21,10 +21,6 @@ export const SeoSchema = z.object({
 	metaTitle: z.string(),
 	metaDescription: z.string(),
 	keywords: z.string().nullable(),
-	metaRobots: z.string().nullable(),
-	structuredData: z.null(),
-	metaViewport: z.string().nullable(),
-	canonicalURL: z.string().nullable(),
 	metaSocial: z.array(MetaSocialSchema).nullable(),
 	metaImage: z
 		.object({

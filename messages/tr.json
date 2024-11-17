@@ -40,7 +40,8 @@
 		"email": "E-posta...",
 		"subject": "Konu...",
 		"message": "Mesajınızı buraya yazın...",
-		"send-message-button": "Mesaj gönder"
+		"send-message-button": "Mesaj gönder",
+		"message-send-success": "Mesaj başarıyla gönderildi"
 	},
 	"NotFoundPage": {
 		"not-found": "Sayfa Bulunamadı",

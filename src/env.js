@@ -3,7 +3,7 @@ import { z } from 'zod';
 
 export const env = createEnv({
 	server: {
-		DOMAIN: z.string(),
+		DOMAIN: z.string().default('localhost'),
 	},
 	client: {
 		NEXT_PUBLIC_NODE_ENV: z

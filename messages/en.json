@@ -40,7 +40,8 @@
 		"email": "Email...",
 		"subject": "Subject...",
 		"message": "Type your message here...",
-		"send-message-button": "Send message"
+		"send-message-button": "Send message",
+		"message-send-success": "Message sent successfully"
 	},
 	"NotFoundPage": {
 		"not-found": "Page not Found",

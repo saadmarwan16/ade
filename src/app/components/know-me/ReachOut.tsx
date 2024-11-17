@@ -22,9 +22,9 @@ const ReachOut: FunctionComponent<ReachOutProps> = () => {
 		if (serverError) toast.error(serverError);
 		else if (data === 'Message sent successfully') {
 			ref.current?.reset();
-			toast.success(data);
+			toast.success(t('message-send-success'));
 		}
-	}, [result]);
+	}, [result, t]);
 
 	return (
 		<div className='flex max-w-3xl flex-col gap-4 sm:gap-6 lg:w-full'>
